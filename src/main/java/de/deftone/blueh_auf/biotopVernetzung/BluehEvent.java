@@ -14,7 +14,7 @@ public class BluehEvent extends BluehLocation {
     private LocalDate date; //wann
 
     public BluehEvent(Double lat, Double lon, String name, LocalDate date) {
-        this.setLattitude(lat);
+        this.setLatitude(lat);
         this.setLongitude(lon);
         this.setName(name);
         this.date = date;

@@ -7,9 +7,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class HomeController {
 //https://wiki.openstreetmap.org/wiki/OpenLayers_Simple_Example
     //https://josm.openstreetmap.de/wiki/DevelopersGuide/CompilingUsingIntelliJ
-    @GetMapping("/")
+    @GetMapping("/home")
     public String home(){
         return "home";
     }
-    
+
 }

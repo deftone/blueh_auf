@@ -7,7 +7,9 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @Controller
@@ -16,7 +18,7 @@ public class BluehController {
 
     private final BluehService service;
 
-    @GetMapping("/map")
+    @GetMapping("/")
     public String map(Model model) {
         List<BluehEvent> allBlueEvents = service.getAllBlueEvents();
         model.addAttribute("blueEvents", allBlueEvents);
@@ -25,11 +27,26 @@ public class BluehController {
     }
 
     @PostMapping("/addNewBluehEvent")
-    //todo: @Valid
-    public String add( @ModelAttribute BluehLocation newBlueLocation,
-                       BindingResult bindingResult,
-                       Model model) {
-//todo: hier weiter, das klappt noch nicht richtig
-        return "map";
+    public String add(@Valid @ModelAttribute BluehLocation newBlueLocation,
+                      BindingResult bindingResult,
+                      Model model,
+                      RedirectAttributes redirectAttrs) {
+
+        if (bindingResult.hasErrors()) {
+            //todo: ein pop up? dass beides angegeben werden muss?
+            // oder etwas ins html hinzufuegen?
+            return "redirect:#error";
+        }
+
+//        if (!service.checkCoordinates(newBlueLocation)) {
+//            return "redirect:/#error";
+//        }
+
+        //to do add new location as green point
+        //nix davon funktionert :( nach dem redirekt ist alles null :(
+        redirectAttrs.addFlashAttribute("showNewLocation", newBlueLocation);
+        model.addAttribute("showNewLocation", newBlueLocation);
+        model.addAttribute("test", "test test");
+        return "redirect:#coordinates"; //deshalb wird das model wieder ueberschrieben!
     }
 }

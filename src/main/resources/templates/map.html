@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="style.css"/>
     <script src="ol.js"></script>
 
-    <script th:inline="javascript">
+<script th:inline="javascript">
     /* OSM & OL example code provided by https://mediarealm.com.au/ */
     /*    https://mediarealm.com.au/articles/openstreetmap-openlayers-map-markers/ */
     /*    https://openlayers.org/download/ */
@@ -17,7 +17,10 @@
     var mapLng = 8.77216;
     var mapDefaultZoom = 14.6;
     var list=/*[[${blueEvents}]]*/ [];
-    console.log(list.length);
+    var showNewLocation = /*[[${newBlueEvent}]]*/;
+    var test = /*[[${test}]]*/;
+    console.log(showNewLocation);
+    console.log(test);
 
     function initialize_map() {
       map = new ol.Map({
@@ -36,7 +39,13 @@
       });
 
       for(var i in list) {
-        add_map_point(list[i].lattitude, list[i].longitude);
+        add_map_point(list[i].latitude, list[i].longitude);
+      }
+
+      if (showNewLocation != null){
+        add_map_point(showNewLocation.latitude, showNewLocation.longitude);
+        console.log(showNewLocation.latitude );  //undefined
+        console.log(showNewLocation.longitude );
       }
     }
 
@@ -59,26 +68,31 @@
 
       map.addLayer(vectorLayer);
     }
-
-
-
-
     </script>
 </head>
 <body onload="initialize_map();">
 <h1>Rossdorf blueht auf</h1>
 
-<form method="POST" th:action="@{/addNewBluehEvent}" th:object="${newBlueLocation}">
+<form id="coordinates" method="POST" th:action="@{/addNewBluehEvent}" th:object="${newBlueLocation}">
 
     <div>
         Name: <input th:field="*{name}"/>
-        Latidude (49.8...): <input th:field="*{lattitude}"/>
-        Latidude (8.7...): <input th:field="*{longitude}"/>
+        Latidude (49.8...): <input th:field="*{latitude}"/>
+        Longitude (8.7...): <input th:field="*{longitude}"/>
+        <button type="submit">auf Karte anzeigen</button>
     </div>
 
-    <button type="submit">auf Karte anzeigen</button>
+
 </form>
 
 <div id="map"></div>
+
+<!--das hier togglen oder als pop up anzeigen,
+ gleiches fuer eine erfolgreiche hinzufuegung,
+ dort dann noch ein button: uebernehmen oder aendern-->
+<div id="error">
+    <p>Ups, etwas ist schief gegangen. Sind die Koordinaten richtig?
+        <a href="#coordinates">Nochmal versuchen</a></p>
+</div>
 </body>
 </html>

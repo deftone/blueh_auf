@@ -1,9 +1,6 @@
 package de.deftone.blueh_auf.biotopVernetzung;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 @Getter
 @Setter
@@ -11,7 +8,10 @@ import lombok.Setter;
 @AllArgsConstructor
 public class BluehLocation {
 
-    private Double lattitude; //wo
+    @NonNull
+    private Double latitude; //wo
+    @NonNull
     private Double longitude;
+    @NonNull
     private String name;  //wer
 }
