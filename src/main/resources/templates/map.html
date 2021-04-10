@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="utf-8">
+    <title>Roßdorf blüht auf</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="ol.css"/>
+    <link rel="stylesheet" href="style.css"/>
+    <script src="ol.js"></script>
+
+    <script>
+    /* OSM & OL example code provided by https://mediarealm.com.au/ */
+    /*    https://mediarealm.com.au/articles/openstreetmap-openlayers-map-markers/ */
+    var map;
+    var mapLat = 49.86;
+		var mapLng = 8.77;
+    var mapDefaultZoom = 15;
+
+    function initialize_map() {
+      map = new ol.Map({
+        target: "map",
+        layers: [
+            new ol.layer.Tile({
+                source: new ol.source.OSM({
+                      url: "https://a.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                })
+            })
+        ],
+        view: new ol.View({
+            center: ol.proj.fromLonLat([mapLng, mapLat]),
+            zoom: mapDefaultZoom
+        })
+      });
+
+      add_map_point(49.859532796957275,8.74570825379904);
+      add_map_point(49.85964959437167, 8.746080369340579);
+    }
+
+    function add_map_point(lat, lng) {
+      var vectorLayer = new ol.layer.Vector({
+        source:new ol.source.Vector({
+          features: [new ol.Feature({
+                geometry: new ol.geom.Point(ol.proj.transform([parseFloat(lng), parseFloat(lat)], 'EPSG:4326', 'EPSG:3857')),
+            })]
+        }),
+        style: new ol.style.Style({
+          image: new ol.style.Icon({
+            anchor: [0.5, 0.5],
+            anchorXUnits: "fraction",
+            anchorYUnits: "fraction",
+            src: "https://upload.wikimedia.org/wikipedia/commons/e/ec/RedDot.svg"
+          })
+        })
+      });
+
+      map.addLayer(vectorLayer);
+    }
+
+
+  </script>
+</head>
+<body onload="initialize_map();">
+<h1>Rossdorf blueht auf</h1>
+<div id="map"></div>
+</body>
+</html>
