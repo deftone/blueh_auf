@@ -1,6 +1,7 @@
       /* OSM & OL example code provided by https://mediarealm.com.au/ */
       /*    https://mediarealm.com.au/articles/openstreetmap-openlayers-map-markers/ */
       /*    https://openlayers.org/download/ */
+//      https://openlayers.org/en/latest/examples/icon.html
 
   var map;
   var mapLat = 49.86034;
@@ -32,7 +33,6 @@ function addPoints(list, showNewLocation){
     console.log(list.length);
     console.log(showNewLocation);
     for(var i in list) {
-    //  console.log(list[i].latitude);
         add_map_point(list[i].latitude, list[i].longitude);
       }
 
@@ -44,7 +44,6 @@ function addPoints(list, showNewLocation){
 }
 
     function add_map_point(lat, lng) {
-//    console.log(lat);
       var vectorLayer = new ol.layer.Vector({
         source:new ol.source.Vector({
           features: [new ol.Feature({
@@ -56,11 +55,9 @@ function addPoints(list, showNewLocation){
             anchor: [0.5, 0.5],
             anchorXUnits: "fraction",
             anchorYUnits: "fraction",
-            src: "https://upload.wikimedia.org/wikipedia/commons/e/ec/RedDot.svg"
-            //src: "images/roterKreis.png"
+            src: "map/roterKreis.png"
           })
         })
       });
-console.log(map);
       map.addLayer(vectorLayer);
     }
