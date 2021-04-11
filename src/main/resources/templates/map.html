@@ -5,8 +5,7 @@
     <title>Roßdorf blüht auf</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <link rel="stylesheet" href="map/ol.css"/>
-<!--    todo: style.css als map.css in map ordner/-->
-    <link rel="stylesheet" href="style.css"/>
+    <link rel="stylesheet" href="map/map.css"/>
     <script src="map/ol.js"></script>
     <script src="map/map.js"></script>
 </head>
@@ -14,24 +13,20 @@
 <body>
 <h1>Rossdorf blueht auf</h1>
 
+<!--todo:wie im tracker: die felder aus dem model fuellen!-->
 <form id="coordinates" method="POST" th:action="@{/addNewBluehEvent}" th:object="${newBlueLocation}">
     <div>
         Name: <input th:field="*{name}"/>
         Latidude (49.8...): <input th:field="*{latitude}"/>
         Longitude (8.7...): <input th:field="*{longitude}"/>
-        <button type="submit">auf Karte anzeigen</button>
+        <input type="submit" value="auf Karte anzeigen">
+        <input id="saveButton" th:formaction="@{/saveNewBluehEvent}" type="submit" value="speichern">
     </div>
 </form>
 
-<div id="map"></div>
+<div id="msg">Bitte die Koordinaten eingeben. Erst anzeigen, wenn richtig, dann speichern. </div>
 
-<!--das hier togglen oder als pop up anzeigen,
- gleiches fuer eine erfolgreiche hinzufuegung,
- dort dann noch ein button: uebernehmen oder aendern-->
-<div id="error">
-    <p>Ups, etwas ist schief gegangen. Sind die Koordinaten richtig?
-        <a href="#coordinates">Nochmal versuchen</a></p>
-</div>
+<div id="map"></div>
 
 <!--script fuer map kann erst nach map div ausgefuehrt werden!-->
 <script th:inline="javascript">
@@ -39,12 +34,9 @@
          var list=/*[[${blueEvents}]]*/ [];
          var showNewLocation = /*[[${showNewLocation}]]*/;
          var errorMsg = /*[[${error}]]*/;
-         console.log(errorMsg);
-         if (errorMsg!=null){
-           alert(errorMsg);
-         }
+
     // und jetzt java script in map aufrufen, wird gefunden, nix davor ist ok
-        initialize_map(list, showNewLocation);
+        initialize_map(list, showNewLocation, errorMsg);
 </script>
 </body>
 </html>

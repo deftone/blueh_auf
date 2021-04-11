@@ -44,14 +44,37 @@ public class BluehController {
             errormessage = "Alle Felder muessen richtig ausgefuellt werden!";
             return "redirect:/";
         }
+
         String errorMsg = service.checkCoordinates(newBlueLocation);
         if (errorMsg != null) {
             errormessage = errorMsg;
-            return "redirect:/";
         }
 
         //ueber model geht es nicht, das wird ueberschrieben
         this.newLocation = newBlueLocation;
-        return "redirect:#coordinates";
+        return "redirect:/";
+    }
+
+    @PostMapping("/saveNewBluehEvent")
+    public String save(@Valid @ModelAttribute BluehLocation newBlueLocation,
+                      BindingResult bindingResult) {
+
+        if (bindingResult.hasErrors()) {
+            errormessage = "Alle Felder muessen richtig ausgefuellt werden!";
+            return "redirect:/";
+        }
+
+        String errorMsg = service.checkCoordinates(newBlueLocation);
+        if (errorMsg != null) {
+            errormessage = errorMsg;
+        }
+
+        if (errorMsg == null){
+            errormessage = "wird gespeichert. TODO! muss implementiert werden";
+        }
+
+        //ueber model geht es nicht, das wird ueberschrieben
+        this.newLocation = newBlueLocation;
+        return "redirect:/";
     }
 }

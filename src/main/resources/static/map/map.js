@@ -27,6 +27,18 @@ function initialize_map(list, showNewLocation) {
     })
   });
 
+  var messageDiv = document.getElementById("msg");
+  if (errorMsg!=null){
+    console.log(errorMsg);
+    //falls koordinaten falsch sind: stehen lassen und fehlermeldung anzeigen
+
+    messageDiv.innerHTML =errorMsg;
+  } else if (showNewLocation!=null) {
+    var saveButton = document.getElementById("saveButton");
+    saveButton.style.display="inline";
+    messageDiv.innerHTML ="soll der Punkt gespeichert werden?";
+  }
+
   addPoints(list, showNewLocation);
 }
 
