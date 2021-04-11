@@ -17,20 +17,25 @@ import java.util.List;
 public class BluehController {
 
     private final BluehService service;
+    private BluehLocation newLocation;
 
     @GetMapping("/")
     public String map(Model model) {
         List<BluehEvent> allBlueEvents = service.getAllBlueEvents();
         model.addAttribute("blueEvents", allBlueEvents);
         model.addAttribute("newBlueLocation", new BluehLocation());
+        if (newLocation != null){
+            model.addAttribute("showNewLocation", newLocation);
+            // jetzt muss sie aber reseted werden
+            newLocation = null;
+        }
         return "map";
     }
 
     @PostMapping("/addNewBluehEvent")
     public String add(@Valid @ModelAttribute BluehLocation newBlueLocation,
                       BindingResult bindingResult,
-                      Model model,
-                      RedirectAttributes redirectAttrs) {
+                      Model model) {
 
         if (bindingResult.hasErrors()) {
             //todo: ein pop up? dass beides angegeben werden muss?
@@ -42,11 +47,8 @@ public class BluehController {
 //            return "redirect:/#error";
 //        }
 
-        //to do add new location as green point
-        //nix davon funktionert :( nach dem redirekt ist alles null :(
-        redirectAttrs.addFlashAttribute("showNewLocation", newBlueLocation);
-        model.addAttribute("showNewLocation", newBlueLocation);
-        model.addAttribute("test", "test test");
-        return "redirect:#coordinates"; //deshalb wird das model wieder ueberschrieben!
+        //ueber model geht es nicht, das wird ueberschrieben
+        this.newLocation = newBlueLocation;
+        return "redirect:#coordinates";
     }
 }
