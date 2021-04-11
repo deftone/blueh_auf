@@ -7,7 +7,6 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -18,34 +17,38 @@ public class BluehController {
 
     private final BluehService service;
     private BluehLocation newLocation;
+    private String errormessage;
 
     @GetMapping("/")
     public String map(Model model) {
         List<BluehEvent> allBlueEvents = service.getAllBlueEvents();
         model.addAttribute("blueEvents", allBlueEvents);
         model.addAttribute("newBlueLocation", new BluehLocation());
-        if (newLocation != null){
+        if (newLocation != null) {
             model.addAttribute("showNewLocation", newLocation);
             // jetzt muss sie aber reseted werden
             newLocation = null;
+        }
+        if (errormessage != null) {
+            model.addAttribute("error", errormessage);
+            errormessage = null;
         }
         return "map";
     }
 
     @PostMapping("/addNewBluehEvent")
     public String add(@Valid @ModelAttribute BluehLocation newBlueLocation,
-                      BindingResult bindingResult,
-                      Model model) {
+                      BindingResult bindingResult) {
 
         if (bindingResult.hasErrors()) {
-            //todo: ein pop up? dass beides angegeben werden muss?
-            // oder etwas ins html hinzufuegen?
-            return "redirect:#error";
+            errormessage = "Alle Felder muessen richtig ausgefuellt werden!";
+            return "redirect:/";
         }
-
-//        if (!service.checkCoordinates(newBlueLocation)) {
-//            return "redirect:/#error";
-//        }
+        String errorMsg = service.checkCoordinates(newBlueLocation);
+        if (errorMsg != null) {
+            errormessage = errorMsg;
+            return "redirect:/";
+        }
 
         //ueber model geht es nicht, das wird ueberschrieben
         this.newLocation = newBlueLocation;

@@ -23,24 +23,41 @@ public class BluehService {
         ALL_BLUE_EVENTS.add(new BluehEvent(49.86832962252158, 8.780362242654158, "Frieder", LocalDate.now()));
     }
 
-    public List<BluehEvent> getAllBlueEvents(){
-                return ALL_BLUE_EVENTS;
+    public List<BluehEvent> getAllBlueEvents() {
+        return ALL_BLUE_EVENTS;
     }
 
-    public boolean checkCoordinates(BluehLocation newBlueLocation) {
-        boolean ret = true;
+    /**
+     * grob mit google maps die raender von rossdorf/gundernhausen geholt:
+     * oben links:
+     * 49.867353931107296, 8.729685074927188
+     * unten links:
+     * 49.850842786862664, 8.74182336668133
+     * oben rechts:
+     * 49.87697630782485, 8.796567062492525
+     * unten rechts:
+     * 49.861876925732666, 8.805913547143215
+     *
+     * @param newBlueLocation Koordinate des neuen BluehEvents
+     * @return true, wenn alles ok ist
+     */
+    public String checkCoordinates(BluehLocation newBlueLocation) {
+        String errorMsg = null;
 
-        if (abs(newBlueLocation.getLatitude()-49.8)>0.2){
-            ret = false;
-            log.error("Latitude weicht mehr als 0.2 von 49.8 ab!");
-
+        //latitude sollte zw. 49.850 und 49.877 sein
+        if (newBlueLocation.getLatitude() < 49.850 ||
+                newBlueLocation.getLatitude() > 49.877) {
+            errorMsg = "Latitude ist nicht innerhalb Rossdorf! Muss zw. 49.850 und 49.877 sein.";
+            log.error(errorMsg);
         }
 
-        if (abs(newBlueLocation.getLatitude()-8.7) > 0.2){
-            ret = false;
-            log.error("Longitude weicht mehr als 0.2 von 8.7 ab!");
+        //longitude sollte zw. 8.730 und 8.806 sein
+        if (newBlueLocation.getLatitude() < 8.730 ||
+                newBlueLocation.getLongitude() > 8.806) {
+            errorMsg += "Longitude ist nicht innerhalb Rossdorf! Muss zw. 8.730 und 8.806 sein.";
+            log.error(errorMsg);
         }
 
-        return ret;
+        return errorMsg;
     }
 }

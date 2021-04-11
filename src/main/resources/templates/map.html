@@ -38,9 +38,13 @@
    // die variablen aus java holen
          var list=/*[[${blueEvents}]]*/ [];
          var showNewLocation = /*[[${showNewLocation}]]*/;
+         var errorMsg = /*[[${error}]]*/;
+         console.log(errorMsg);
+         if (errorMsg!=null){
+           alert(errorMsg);
+         }
     // und jetzt java script in map aufrufen, wird gefunden, nix davor ist ok
         initialize_map(list, showNewLocation);
-
 </script>
 </body>
 </html>
