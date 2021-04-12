@@ -53,6 +53,12 @@ function addPoints(list, showNewLocation){
     if (showNewLocation != null){
       // neuer punkt soll in anderer farbe hinzugefuegt werden
       add_map_point_blue(showNewLocation.latitude, showNewLocation.longitude);
+      //und koordinaten wieder in die boxen schreiben
+      document.getElementById("lat").value = showNewLocation.latitude;
+      document.getElementById("lon").value = showNewLocation.longitude;
+      //und den namen auch
+      document.getElementById("name").value = showNewLocation.name;
+
     }
 }
 

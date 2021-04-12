@@ -52,7 +52,7 @@ public class BluehService {
         }
 
         //longitude sollte zw. 8.730 und 8.806 sein
-        if (newBlueLocation.getLatitude() < 8.730 ||
+        if (newBlueLocation.getLongitude() < 8.730 ||
                 newBlueLocation.getLongitude() > 8.806) {
             errorMsg += "Longitude ist nicht innerhalb Rossdorf! Muss zw. 8.730 und 8.806 sein.";
             log.error(errorMsg);

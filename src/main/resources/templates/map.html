@@ -16,9 +16,10 @@
 <!--todo:wie im tracker: die felder aus dem model fuellen!-->
 <form id="coordinates" method="POST" th:action="@{/addNewBluehEvent}" th:object="${newBlueLocation}">
     <div>
-        Name: <input th:field="*{name}"/>
-        Latidude (49.8...): <input th:field="*{latitude}"/>
-        Longitude (8.7...): <input th:field="*{longitude}"/>
+        Name: <input id="name" th:field="*{name}"/>
+        Latidude (49.8...): <input id="lat" type="text" name="latitude" />
+<!--        Latidude (49.8...): <input th:field="*{latitude}"/>-->
+        Longitude (8.7...): <input id="lon" th:field="*{longitude}"/>
         <input type="submit" value="auf Karte anzeigen">
         <input id="saveButton" th:formaction="@{/saveNewBluehEvent}" type="submit" value="speichern">
     </div>
