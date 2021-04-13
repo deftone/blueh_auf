@@ -12,6 +12,6 @@ public class BluehLocation {
     private Double latitude; //wo
     @NonNull
     private Double longitude;
-    @NonNull
+//    @NonNull
     private String name;  //wer
 }

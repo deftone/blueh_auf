@@ -70,7 +70,8 @@ public class BluehController {
         }
 
         if (errorMsg == null){
-            errormessage = "wird gespeichert. TODO! muss implementiert werden";
+            service.saveNewBlueEvent(newBlueLocation);
+            errormessage = "wird gespeichert. TODO! kugeln sollte jetzt rot werden";
         }
 
         //ueber model geht es nicht, das wird ueberschrieben
