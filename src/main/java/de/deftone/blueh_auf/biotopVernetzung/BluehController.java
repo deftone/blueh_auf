@@ -19,7 +19,7 @@ public class BluehController {
     private BluehLocation newLocation;
     private String errormessage;
 
-    @GetMapping("/")
+    @GetMapping("/biotopvernetzung")
     public String map(Model model) {
         List<BluehEvent> allBlueEvents = service.getAllBlueEvents();
         model.addAttribute("blueEvents", allBlueEvents);
@@ -36,13 +36,13 @@ public class BluehController {
         return "map";
     }
 
-    @PostMapping("/addNewBluehEvent")
+    @PostMapping("/biotopvernetzung/addNewBluehEvent")
     public String add(@Valid @ModelAttribute BluehLocation newBlueLocation,
                       BindingResult bindingResult) {
 
         if (bindingResult.hasErrors()) {
             errormessage = "Alle Felder muessen richtig ausgefuellt werden!";
-            return "redirect:/";
+            return "redirect:/biotopvernetzung";
         }
 
         String errorMsg = service.checkCoordinates(newBlueLocation);
@@ -52,16 +52,16 @@ public class BluehController {
 
         //ueber model geht es nicht, das wird ueberschrieben
         this.newLocation = newBlueLocation;
-        return "redirect:/";
+        return "redirect:/biotopvernetzung";
     }
 
-    @PostMapping("/saveNewBluehEvent")
+    @PostMapping("/biotopvernetzung/saveNewBluehEvent")
     public String save(@Valid @ModelAttribute BluehLocation newBlueLocation,
                       BindingResult bindingResult) {
 
         if (bindingResult.hasErrors()) {
             errormessage = "Alle Felder muessen richtig ausgefuellt werden!";
-            return "redirect:/";
+            return "redirect:/biotopvernetzung";
         }
 
         String errorMsg = service.checkCoordinates(newBlueLocation);
@@ -76,6 +76,6 @@ public class BluehController {
             this.newLocation  = null;
         }
 
-        return "redirect:/";
+        return "redirect:/biotopvernetzung";
     }
 }

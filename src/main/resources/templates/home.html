@@ -3,49 +3,11 @@
 <head>
     <title>Roßdorf blüht auf</title>
     <link rel="stylesheet" href="style.css" th:href="@{/style.css}"/>
-    <script src="OpenLayers.js"></script>
-<!--    <script>-->
-<!--      function init() {-->
-<!--        map = new OpenLayers.Map("basicMap");-->
-<!--        var mapnik         = new OpenLayers.Layer.OSM();-->
-<!--        var fromProjection = new OpenLayers.Projection("EPSG:4326");   // Transform from WGS 1984-->
-<!--        var toProjection   = new OpenLayers.Projection("EPSG:900913"); // to Spherical Mercator Projection-->
-<!--        var position       = new OpenLayers.LonLat(8.77,49.86).transform( fromProjection, toProjection);-->
-<!--        var zoom           = 15;-->
-<!--        map.addLayer(mapnik);-->
-<!--        map.setCenter(position, zoom );-->
-<!--      }-->
-<!--    </script>-->
-    <script>
-    function init() {
-    var lat1           = 49.86;
-    var lat2           = 49.87;
-    var lon1           = 8.77;
-    var lon2           = 8.77;
-    var zoom           = 15;
-
-    var fromProjection = new OpenLayers.Projection("EPSG:4326");   // Transform from WGS 1984
-    var toProjection   = new OpenLayers.Projection("EPSG:900913"); // to Spherical Mercator Projection
-    var position1       = new OpenLayers.LonLat(lon1, lat1).transform( fromProjection, toProjection);
-    var position2       = new OpenLayers.LonLat(lon2, lat2).transform( fromProjection, toProjection);
-
-    map = new OpenLayers.Map("basicMap");
-    var mapnik         = new OpenLayers.Layer.OSM();
-    map.addLayer(mapnik);
-
-    var markers = new OpenLayers.Layer.Markers( "Markers" );
-    map.addLayer(markers);
-    markers.addMarker(new OpenLayers.Marker(position1));
-    markers.addMarker(new OpenLayers.Marker(position2));
-
-    map.setCenter(position1, zoom);
-    }
-</script>
 
 
 </head>
-<body onload="init();">
-    <h1>Rossdorf blueht auf</h1>
-    <div id="basicMap"></div>
+<body>
+<h1>Rossdorf blueht auf</h1>
+<p>Hier entsteht was neues!</p>
 </body>
 </html>
