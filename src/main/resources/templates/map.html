@@ -13,19 +13,18 @@
 <body>
 <h1>Rossdorf blueht auf</h1>
 
-<!--todo:wie im tracker: die felder aus dem model fuellen!-->
 <form id="coordinates" method="POST" th:action="@{/addNewBluehEvent}" th:object="${newBlueLocation}">
     <div>
         Name: <input id="name" th:field="*{name}"/>
         Latidude (49.8...): <input id="lat" type="text" name="latitude" />
 <!--        Latidude (49.8...): <input th:field="*{latitude}"/>-->
         Longitude (8.7...): <input id="lon" th:field="*{longitude}"/>
-        <input type="submit" value="auf Karte anzeigen">
-        <input id="saveButton" th:formaction="@{/saveNewBluehEvent}" type="submit" value="speichern">
+        <input type="submit" value="Auf Karte anzeigen">
+        <input id="saveButton" th:formaction="@{/saveNewBluehEvent}" type="submit" value="Auf Karte speichern">
     </div>
 </form>
 
-<div id="msg">Bitte die Koordinaten eingeben. Erst anzeigen, wenn richtig, dann speichern. </div>
+<div id="msg">Um einen neuen Bluehpunkt hinzuzufuegen bitte die Koordinaten eingeben. Im zweiten Schritt speichern. </div>
 
 <div id="map"></div>
 

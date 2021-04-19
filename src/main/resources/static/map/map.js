@@ -36,7 +36,7 @@ function initialize_map(list, showNewLocation) {
   } else if (showNewLocation!=null) {
     var saveButton = document.getElementById("saveButton");
     saveButton.style.display="inline";
-    messageDiv.innerHTML ="soll der Punkt gespeichert werden?";
+    messageDiv.innerHTML ="Soll der Punkt gespeichert werden?";
   }
 
   addPoints(list, showNewLocation);

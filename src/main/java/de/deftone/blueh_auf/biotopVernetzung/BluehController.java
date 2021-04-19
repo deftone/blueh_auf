@@ -71,11 +71,11 @@ public class BluehController {
 
         if (errorMsg == null){
             service.saveNewBlueEvent(newBlueLocation);
-            errormessage = "wird gespeichert. TODO! kugeln sollte jetzt rot werden";
+            errormessage = "wurde gespeichert. neuer punkt kann eingegeben werden";
+            // deshalb muss das objekt hier wieder resetted werden
+            this.newLocation  = null;
         }
 
-        //ueber model geht es nicht, das wird ueberschrieben
-        this.newLocation = newBlueLocation;
         return "redirect:/";
     }
 }
