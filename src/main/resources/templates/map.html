@@ -15,7 +15,7 @@
 
 <form id="coordinates" method="POST" th:action="@{/biotopvernetzung/addNewBluehEvent}" th:object="${newBlueLocation}">
     <div>
-        Name: <input id="name" th:field="*{name}"/>
+<!--        Name: <input id="name" th:field="*{name}"/>-->
         Latidude (49.8...): <input id="lat" type="text" name="latitude" />
 <!--        Latidude (49.8...): <input th:field="*{latitude}"/>-->
         Longitude (8.7...): <input id="lon" th:field="*{longitude}"/>
@@ -24,7 +24,15 @@
     </div>
 </form>
 
-<div id="msg">Um einen neuen Bluehpunkt hinzuzufuegen bitte die Koordinaten eingeben. Im zweiten Schritt speichern. </div>
+<form id="address" method="POST" th:action="@{/biotopvernetzung/addNewBluehEventAddress}">
+    <div>
+        Strasse mit Hausnummer: <input type="text" name="address"/> 64380 Roßdorf/Gundernhausen
+        <input type="submit" value="Auf Karte anzeigen">
+        <input id="saveButtonAddress" th:formaction="@{/biotopvernetzung/saveNewBluehEventAddress}" type="submit" value="Auf Karte speichern">
+    </div>
+</form>
+
+<div id="msg">Um einen neuen Bluehpunkt hinzuzufuegen bitte die Koordinaten oder Adresse eingeben. Im zweiten Schritt speichern. </div>
 
 <div id="map"></div>
 

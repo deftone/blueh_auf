@@ -18,7 +18,11 @@ public class BluehService {
         return repo.findAll();
     }
 
-    /**
+    /** tiho3Nge#geo
+     * https://developer.mapquest.com/documentation/open/geocoding-api/
+     * https://opencagedata.com/pricing
+     * https://developer.here.com/blog/how-to-use-geocoding-in-java-with-the-here-geocoding-search-api
+     * https://opencagedata.com/tutorials/geocode-in-java
      * grob mit google maps die raender von rossdorf/gundernhausen geholt:
      * oben links:
      * 49.867353931107296, 8.729685074927188
@@ -60,7 +64,7 @@ public class BluehService {
     public List<BluehEvent> addEvents(List<BluehEvent> events) {
         List<BluehEvent> savedEvents = new ArrayList<>();
         for (BluehEvent event : events){
-            BluehLocation location = new BluehLocation(event.getLatitude(), event.getLongitude(), event.getName());
+            BluehLocation location = new BluehLocation(event.getLatitude(), event.getLongitude());
             if (checkCoordinates(location) == null){
                 repo.save(event);
                 savedEvents.add(event);

@@ -9,9 +9,7 @@ import lombok.*;
 public class BluehLocation {
 
     @NonNull
-    private Double latitude; //wo
+    private Double latitude;
     @NonNull
     private Double longitude;
-//    @NonNull
-    private String name;  //wer
 }

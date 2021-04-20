@@ -25,13 +25,13 @@ public class BluehEvent {
     @NonNull
     private Double longitude;
     //    @NonNull
-    private String name;  //wer
+//    private String name;  //wer
     private LocalDate date; //wann
 
     public BluehEvent(BluehLocation bluehLocation){
         this.latitude = bluehLocation.getLatitude();
         this.longitude= (bluehLocation.getLongitude());
-        this.name = (bluehLocation.getName());
+//        this.name = (bluehLocation.getName());
         this.date = (LocalDate.now());
     }
 }

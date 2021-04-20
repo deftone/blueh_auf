@@ -26,7 +26,7 @@ function initialize_map(list, showNewLocation) {
         zoom: mapDefaultZoom
     })
   });
-
+//todo: auch fuer address save button das selbe machen!
   var messageDiv = document.getElementById("msg");
   if (errorMsg!=null){
     console.log(errorMsg);
