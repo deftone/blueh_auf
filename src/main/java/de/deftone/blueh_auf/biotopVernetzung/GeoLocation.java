@@ -6,7 +6,7 @@ import lombok.*;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class BluehLocation {
+public class GeoLocation {
 
     @NonNull
     private Double latitude;

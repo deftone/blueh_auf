@@ -10,8 +10,11 @@ var mapLng = 8.77216;
 var mapDefaultZoom = 14.6;
 var list;
 var showNewLocation;
+var address;
+var coordinatesString;
 
-function initialize_map(list, showNewLocation) {
+//die parameter muessen scheinbar gar nicht uebergeben werden??
+function initialize_map(list, showNewLocation, coordinatesString, address, errorMsg) {
   map = new ol.Map({
     target: "map",
     layers: [
@@ -26,7 +29,7 @@ function initialize_map(list, showNewLocation) {
         zoom: mapDefaultZoom
     })
   });
-//todo: auch fuer address save button das selbe machen!
+
   var messageDiv = document.getElementById("msg");
   if (errorMsg!=null){
     console.log(errorMsg);
@@ -56,9 +59,16 @@ function addPoints(list, showNewLocation){
       //und koordinaten wieder in die boxen schreiben
       document.getElementById("lat").value = showNewLocation.latitude;
       document.getElementById("lon").value = showNewLocation.longitude;
-      //und den namen auch
-      document.getElementById("name").value = showNewLocation.name;
+    }
 
+    // auch die google maps copy & paste coordinaten wieder reinschreiben, falls so eingetragen
+    if (coordinatesString != null){
+      document.getElementById("coordinatesInput").value = coordinatesString;
+    }
+
+    // und auch die adresse (falls sie eingegeben wurde)
+    if (address != null){
+      document.getElementById("addressInput").value = address;
     }
 }
 

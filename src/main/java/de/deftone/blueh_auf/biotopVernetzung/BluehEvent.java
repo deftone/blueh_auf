@@ -24,14 +24,12 @@ public class BluehEvent {
     private Double latitude; //wo
     @NonNull
     private Double longitude;
-    //    @NonNull
-//    private String name;  //wer
+// todo    private User name;  //wer
     private LocalDate date; //wann
 
-    public BluehEvent(BluehLocation bluehLocation){
-        this.latitude = bluehLocation.getLatitude();
-        this.longitude= (bluehLocation.getLongitude());
-//        this.name = (bluehLocation.getName());
-        this.date = (LocalDate.now());
+    public BluehEvent(GeoLocation geoLocation) {
+        this.latitude = geoLocation.getLatitude();
+        this.longitude = geoLocation.getLongitude();
+        this.date = LocalDate.now();
     }
 }

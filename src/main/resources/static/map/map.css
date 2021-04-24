@@ -10,6 +10,6 @@ html, body {
          margin: 2%;
 }
 
-#saveButton, #saveButtonAddress{
+#saveButton{
  display: none;
 }

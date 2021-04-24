@@ -21,7 +21,7 @@ public class GeoHelper {
     private static final HttpClient httpClient = HttpClient.newHttpClient();
     private static final ObjectMapper mapper = new ObjectMapper();
 
-    public BluehLocation getCoordinatesFromAddress(String query) throws IOException, InterruptedException {
+    public GeoLocation getCoordinatesFromAddress(String query) throws IOException, InterruptedException {
 
         String encodedQuery = URLEncoder.encode(query, "UTF-8");
         String requestUri = GEOCODING_RESOURCE + "?apiKey=" + API_KEY + "&q=" + encodedQuery;
@@ -35,24 +35,19 @@ public class GeoHelper {
         return extractCoordinates(stringHttpResponse.body());
     }
 
-    private BluehLocation extractCoordinates(String response) throws JsonProcessingException {
+    private GeoLocation extractCoordinates(String response) throws JsonProcessingException {
 
-        BluehLocation bluehLocation = new BluehLocation();
+        GeoLocation geoLocation = new GeoLocation();
 
         JsonNode responseJsonNode = mapper.readTree(response);
         JsonNode items = responseJsonNode.get("items");
 
         for (JsonNode item : items) {
-//            JsonNode address = item.get("address");
-//            String label = address.get("label").asText();
             JsonNode position = item.get("position");
-
-//            String lat = position.get("lat").asText();
-//            String lng = position.get("lng").asText();
-            bluehLocation.setLatitude(position.get("lat").asDouble());
-            bluehLocation.setLongitude(position.get("lng").asDouble());
+            geoLocation.setLatitude(position.get("lat").asDouble());
+            geoLocation.setLongitude(position.get("lng").asDouble());
         }
-        return bluehLocation;
+        return geoLocation;
     }
 
 }

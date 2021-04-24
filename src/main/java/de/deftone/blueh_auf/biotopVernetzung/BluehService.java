@@ -18,7 +18,8 @@ public class BluehService {
         return repo.findAll();
     }
 
-    /** tiho3Nge#geo
+    /**
+     * tiho3Nge#geo
      * https://developer.mapquest.com/documentation/open/geocoding-api/
      * https://opencagedata.com/pricing
      * https://developer.here.com/blog/how-to-use-geocoding-in-java-with-the-here-geocoding-search-api
@@ -36,7 +37,7 @@ public class BluehService {
      * @param newBlueLocation Koordinate des neuen BluehEvents
      * @return true, wenn alles ok ist
      */
-    public String checkCoordinates(BluehLocation newBlueLocation) {
+    public String checkCoordinates(GeoLocation newBlueLocation) {
         String errorMsg = null;
 
         //latitude sollte zw. 49.850 und 49.877 sein
@@ -56,16 +57,16 @@ public class BluehService {
         return errorMsg;
     }
 
-    public BluehEvent saveNewBlueEvent(BluehLocation bluehLocation){
-        BluehEvent bluehEvent = new BluehEvent(bluehLocation);
+    public BluehEvent saveNewBlueEvent(GeoLocation geoLocation) {
+        BluehEvent bluehEvent = new BluehEvent(geoLocation);
         return repo.save(bluehEvent);
     }
 
     public List<BluehEvent> addEvents(List<BluehEvent> events) {
         List<BluehEvent> savedEvents = new ArrayList<>();
-        for (BluehEvent event : events){
-            BluehLocation location = new BluehLocation(event.getLatitude(), event.getLongitude());
-            if (checkCoordinates(location) == null){
+        for (BluehEvent event : events) {
+            GeoLocation location = new GeoLocation(event.getLatitude(), event.getLongitude());
+            if (checkCoordinates(location) == null) {
                 repo.save(event);
                 savedEvents.add(event);
             }
