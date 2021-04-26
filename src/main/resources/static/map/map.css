@@ -1,14 +1,103 @@
+html {
+  font-size: 10px;
+  /*easy to calculate: 1rem=10px*/
+  }
+
 html, body {
          width: 100%;
          height: 100%;
          margin: 0;
+         background-color: #699926; // dunkleres gruen
+
+         font-size: 16rem;
+         font-family: Muli, sans-serif;
         }
+
+h1 {
+  font-size: 5rem;
+  color: white;
+  text-shadow: 3px 3px black; /* dunkles braun */
+  padding: 2rem;
+  align: center;
+  }
+
+form, div, p, ul, li{
+  font-size: 2rem;
+  line-height: 1.25;
+  color: white;
+}
+
+ol,
+ul {
+  padding: 2rem;
+  list-style: circle;
+}
+
+li {
+  align-items: start;
+}
+
+a {
+  text-decoration: none;
+}
+
+/* colours:
+#E0A66C; // helles braun
+#945313; // dunkles braun
+#5CD9FF; // helles blau
+#38B9E0; // mittleres blau
+#0F7694; // dunkels blau
+*/
+
+
+.box {
+  display: flex;
+  justify-content: center;
+  background-color: #699926; // dunkleres gruen
+  //border: solid, black, 1px;
+  padding: 2rem;
+  }
+
+.box a{
+       background-color: #0080ff ; /* mittleres blau */
+       color: white;
+       font-size: 2rem;
+       text-align: center;
+       border-radius: 1rem;
+       display: flex-item;
+       align: center;
+       padding: 0.8rem 10rem;
+       margin: 2rem 1.6rem;
+       }
+
+.box-30 {
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    border-radius: 1rem;
+    width: 30%;
+    padding: 2rem;
+    border: 1px solid white;
+    }
+
+
+.map {
+    border-radius: 1rem;
+    width: 97%;
+    height: 97%;
+    padding: 2rem;
+  //  border: 1px solid green;
+    }
 
 #map{
          width: 100%;
          height: 100%;
-         margin: 2%;
+         margin: 0%;
+         border-radius: 1rem;
+  //       border: 1px solid red;
 }
+
 
 #saveButton{
  display: none;

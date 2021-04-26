@@ -4,65 +4,66 @@
     <meta charset="utf-8">
     <title>Roßdorf blüht auf</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" href="reset.css">
     <link rel="stylesheet" href="map/ol.css"/>
     <link rel="stylesheet" href="map/map.css"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Muli">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="map/ol.js"></script>
     <script src="map/map.js"></script>
 </head>
 
 <body>
-<h1>Rossdorf blueht auf</h1>
+
+<h1>Biotopvernetzung</h1>
+
+<section class="map">
+    <div id="map"></div>
+</section>
 
 
-<form id="address" method="POST" th:action="@{/biotopvernetzung/newBluehEventAddress}">
-    <div>
-        Strasse mit Hausnummer: <input id="addressInput" type="text" name="address"/> 64380 Roßdorf/Gundernhausen
-        <input type="submit" value="Auf Karte anzeigen">
-        <!--        <input id="saveButtonAddress" th:formaction="@{/biotopvernetzung/saveNewBluehEvent}" type="submit"-->
-        <!--               value="Auf Karte speichern">-->
-    </div>
-</form>
+<section class="box">
 
-<form id="coordinatesString" method="POST" th:action="@{/biotopvernetzung/newBluehEventCoordinatesStr}">
-    <div>
-        Koordinaten (49.34, 8.234): <input id="coordinatesInput" type="text" name="coordinates"/> copy&paste von Google Maps
-        <input type="submit" value="Auf Karte anzeigen">
-    </div>
-</form>
+    <section class="box-30">
+        <p>
+        Auf dieser Karte seht ihr alle Blühpunkte in Roßdorf und Gundernhausen. hier noch mehr Text
+            bla bla bla bla bla bla
+            bla bla bla bla bla bla
+            bla bla bla bla bla bla
+            bla bla bla bla bla bla
+            bla bla bla bla bla bla
+            bla bla bla bla bla bla
+        </p>
+    </section>
 
-<form id="coordinates" method="POST" th:action="@{/biotopvernetzung/newBluehEventCoordinates}"
-      th:object="${newGeoLocation}">
-    <div>
-        <!--th:field oder type und name, ist das selbe-->
-        Latidude (49.8...): <input id="lat" type="text" name="latitude"/>
-        Longitude (8.7...): <input id="lon" th:field="*{longitude}"/>
-        <input type="submit" value="Auf Karte anzeigen">
-    </div>
-</form>
+    <section class="box-30">
+       <p>Warum? Weil bla bla bla bla bla bla
+           bla bla bla bla bla bla</p>
+        <ul>
+            <li>Bienen bla bla bla bla bla bla</li>
+            <li>Insekten bla bla bla bla bla bla</li>
+            <li>und</li>
+            <li>so</li>
+        </ul>
+    </section>
 
-<form id="save" method="POST" th:action="@{/biotopvernetzung/saveNewBluehEvent}">
-    <div>
-        <input id="saveButton" type="submit" value="Auf Karte speichern">
-    </div>
-</form>
+    <section class="box-30">
+        <p>Mach auch mit! Melde dich an/Registrier dich und gebe Blühpunkte an!</p>
+        <a href="#anmelden" role="button">Mitmachen</a>
+    </section>
+</section>
 
-<div id="msg">Um einen neuen Bluehpunkt hinzuzufuegen bitte die Koordinaten oder Adresse eingeben. Im zweiten Schritt
-    speichern.
-</div>
 
-<div id="map"></div>
+
 
 <!--script fuer map kann erst nach map div ausgefuehrt werden!-->
 <script th:inline="javascript">
    // die variablen aus java holen
          var list=/*[[${blueEvents}]]*/ [];
-         var showNewLocation = /*[[${showNewLocation}]]*/;
-         var coordinatesString = /*[[${coordinatesString}]]*/;
-         var address = /*[[${address}]]*/;
-         var errorMsg = /*[[${error}]]*/;
-
     // und jetzt java script in map aufrufen, wird gefunden, nix davor ist ok
-        initialize_map(list, showNewLocation, coordinatesString, address, errorMsg);
+        initialize_map(list);
+
+
 </script>
 </body>
 </html>
