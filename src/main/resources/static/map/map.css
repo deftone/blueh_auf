@@ -16,9 +16,11 @@ html, body {
 h1 {
   font-size: 5rem;
   color: white;
-  text-shadow: 3px 3px black; /* dunkles braun */
   padding: 2rem;
   align: center;
+  text-align: center;
+  font-family: 'Pacifico', cursive;
+  text-shadow: -1px -1px 0 #1b5764, 1px -1px 0 #1b5764, -1px 1px 0 #1b5764, 1px 1px 0 #1b5764;
   }
 
 form, div, p, ul, li{
@@ -47,6 +49,8 @@ a {
 #5CD9FF; // helles blau
 #38B9E0; // mittleres blau
 #0F7694; // dunkels blau
+#ED8524; //orange
+#0080ff ; // mittleres blau
 */
 
 
@@ -59,26 +63,32 @@ a {
   }
 
 .box a{
-       background-color: #0080ff ; /* mittleres blau */
+       background-color: #ED8524;
        color: white;
-       font-size: 2rem;
+       font-size: 3rem;
        text-align: center;
        border-radius: 1rem;
-       display: flex-item;
-       align: center;
-       padding: 0.8rem 10rem;
+       width: 90%;
+       padding: 0.8rem 0rem;
        margin: 2rem 1.6rem;
        }
 
-.box-30 {
+.box-30, box-70 {
     display: inline-flex;
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
     border-radius: 1rem;
-    width: 30%;
     padding: 2rem;
     border: 1px solid white;
+    }
+
+.box-30{
+    width: 25%;
+    }
+
+.box-70 {
+    width: 75%;
     }
 
 
@@ -86,8 +96,6 @@ a {
     border-radius: 1rem;
     width: 97%;
     height: 97%;
-    padding: 2rem;
-  //  border: 1px solid green;
     }
 
 #map{
@@ -95,7 +103,6 @@ a {
          height: 100%;
          margin: 0%;
          border-radius: 1rem;
-  //       border: 1px solid red;
 }
 
 
