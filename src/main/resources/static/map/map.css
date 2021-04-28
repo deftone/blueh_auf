@@ -62,7 +62,7 @@ a {
   padding: 2rem;
   }
 
-.box a{
+.box a.orange-button{
        background-color: #ED8524;
        color: white;
        font-size: 3rem;
@@ -73,13 +73,19 @@ a {
        margin: 2rem 1.6rem;
        }
 
-.box-30, box-70 {
+.background{
+    background-color: #945313;
+    border-radius: 1rem;
+    }
+
+.box-30, .box-70 {
     display: inline-flex;
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
     border-radius: 1rem;
     padding: 2rem;
+    margin: 1rem;
     border: 1px solid white;
     }
 
@@ -94,15 +100,15 @@ a {
 
 .map {
     border-radius: 1rem;
-    width: 97%;
-    height: 97%;
+    width: 100%;
+    height: 100%;
     }
 
 #map{
-         width: 100%;
-         height: 100%;
-         margin: 0%;
-         border-radius: 1rem;
+     width: 100%;
+     height: 100%;
+     margin: 0%;
+     border-radius: 1rem;
 }
 
 
