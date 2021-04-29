@@ -31,6 +31,16 @@ public class BluehController {
         model.addAttribute("blueEvents", allBlueEvents);
         //falls neues blueEvent ueber lat und lon eingegeben wird:
         model.addAttribute("newGeoLocation", new GeoLocation());
+        return "map";
+    }
+
+    @GetMapping("/biotopvernetzungUI")
+    public String mapUI(Model model) {
+        List<BluehEvent> allBlueEvents = service.getAllBlueEvents();
+        //alle bisherigen blueEvents:
+        model.addAttribute("blueEvents", allBlueEvents);
+        //falls neues blueEvent ueber lat und lon eingegeben wird:
+        model.addAttribute("newGeoLocation", new GeoLocation());
 
         if (newBluehLocation != null) {
             model.addAttribute("showNewLocation", newBluehLocation);
@@ -52,30 +62,31 @@ public class BluehController {
             model.addAttribute("error", errormessage);
             errormessage = null;
         }
-        return "map";
+        return "mapUI";
     }
 
     // wenn neues blueEvent ueber adresse eingegeben wird
-    @PostMapping("/biotopvernetzung/newBluehEventAddress")
+    @PostMapping("/biotopvernetzungUI/newBluehEventAddress")
     public String addAddress(@RequestParam(value = "address") String address) {
 
         try {
             //todo: address validieren, strasse und hausnummer, mehr darf nicht eingegeben werden
             GeoLocation geoLocation = helper.getCoordinatesFromAddress(address + ", 64380 Roßdorf, Germany");
+            // todo: und was, wenn addresse nicht exisitert??
             if (geoLocation != null) {
                 //ueber model geht es nicht, das wird ueberschrieben
                 this.newBluehLocation = geoLocation;
                 this.address = address;
-                return "redirect:/biotopvernetzung";
+                return "redirect:/biotopvernetzungUI";
             }
         } catch (IOException | InterruptedException e) {
             e.printStackTrace();
         }
-        return "redirect:/biotopvernetzung";
+        return "redirect:/biotopvernetzungUI";
     }
 
     // wenn neues blueEvent ueber lat und lon als String (copy&paste von google maps) eingegeben wird
-    @PostMapping("/biotopvernetzung/newBluehEventCoordinatesStr")
+    @PostMapping("/biotopvernetzungUI/newBluehEventCoordinatesStr")
     public String addCoordinatesString(@RequestParam(value = "coordinates") String coordinates) {
 
         //todo: aus String ein GeoLocation machen
@@ -89,17 +100,17 @@ public class BluehController {
         //ueber model geht es nicht, das wird ueberschrieben
         this.newBluehLocation = newGeoLocation;
         this.coordinatesString = coordinates;
-        return "redirect:/biotopvernetzung";
+        return "redirect:/biotopvernetzungUI";
     }
 
     // wenn neues BluehEvent ueber lat und lon coordinates eingetragen wird
-    @PostMapping("/biotopvernetzung/newBluehEventCoordinates")
+    @PostMapping("/biotopvernetzungUI/newBluehEventCoordinates")
     public String addCoordinates(@Valid @ModelAttribute GeoLocation newGeoLocation,
                                  BindingResult bindingResult) {
 
         if (bindingResult.hasErrors()) {
             errormessage = "Alle Felder muessen richtig ausgefuellt werden!";
-            return "redirect:/biotopvernetzung";
+            return "redirect:/biotopvernetzungUI";
         }
 
         String errorMsg = service.checkCoordinates(newGeoLocation);
@@ -109,11 +120,11 @@ public class BluehController {
 
         //ueber model geht es nicht, das wird ueberschrieben
         this.newBluehLocation = newGeoLocation;
-        return "redirect:/biotopvernetzung";
+        return "redirect:/biotopvernetzungUI";
     }
 
     // wenn neues BluehEvent gespeichert wird (gilt fuer alle 3 eingabe typen)
-    @PostMapping("/biotopvernetzung/saveNewBluehEvent")
+    @PostMapping("/biotopvernetzungUI/saveNewBluehEvent")
     public String save() {
 
         //sollte ueberfuessig sein
@@ -130,7 +141,7 @@ public class BluehController {
             this.newBluehLocation = null;
         }
 
-        return "redirect:/biotopvernetzung";
+        return "redirect:/biotopvernetzungUI";
     }
 
 }
