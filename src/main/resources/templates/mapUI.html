@@ -50,7 +50,7 @@
         <form id="address" method="POST" th:action="@{/biotopvernetzungUI/newBluehEventAddress}">
             <div>
                 Adresse (Strasse Hausnummer): <input id="addressInput" type="text" name="address"/>
-                <input type="submit" value="anzeigen">
+                <input class="form-submit-button" type="submit" value="anzeigen">
                 <!--        <input id="saveButtonAddress" th:formaction="@{/biotopvernetzung/saveNewBluehEvent}" type="submit"-->
                 <!--               value="Auf Karte speichern">-->
             </div>
@@ -60,7 +60,7 @@
         <form id="coordinatesString" method="POST" th:action="@{/biotopvernetzungUI/newBluehEventCoordinatesStr}">
             <div>
                 Koordinaten (49.34, 8.234): <input id="coordinatesInput" type="text" name="coordinates"/>
-                <input type="submit" value="anzeigen">
+                <input class="form-submit-button" type="submit" value="anzeigen">
             </div>
         </form>
 
@@ -71,20 +71,20 @@
                 <!--th:field oder type und name, ist das selbe-->
                 Latidude (49.8...): <input id="lat" type="text" name="latitude"/>
                 Longitude (8.7...): <input id="lon" th:field="*{longitude}"/>
-                <input type="submit" value="anzeigen">
+                <input class="form-submit-button" type="submit" value="anzeigen">
             </div>
         </form>
 
         <br>
 
-        <form id="save" method="POST" th:action="@{/biotopvernetzungUI/saveNewBluehEvent}">
+        <form id="save" method="POST" th:action="@{/biotopvernetzungUI/saveNewBluehEvent}"
+              th:object="${newGeoLocation}">
             <div>
-                <input id="saveButton" type="submit" value="Auf Karte speichern">
+                <p id="errormsg"></p>
+                <p id="msg"></p>
+                <input id="saveButton" class="form-submit-button" type="submit" value="speichern">
             </div>
         </form>
-
-        <div id="msg"></div>
-
 
     </section>
 

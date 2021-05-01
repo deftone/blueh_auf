@@ -31,16 +31,21 @@ function initialize_map(list, showNewLocation, coordinatesString, address, error
     })
   });
 
-  var messageDiv = document.getElementById("msg");
+
   if (errorMsg!=null){
     console.log(errorMsg);
     //falls koordinaten falsch sind: stehen lassen und fehlermeldung anzeigen
+    var errorDiv = document.getElementById("errormsg");
+    errorDiv.innerHTML =errorMsg;
+    errorDiv.style.display="inline";
 
-    messageDiv.innerHTML =errorMsg;
   } else if (showNewLocation!=null) {
+  console.log(showNewLocation)
     var saveButton = document.getElementById("saveButton");
     saveButton.style.display="inline";
-//    messageDiv.innerHTML ="Soll der Punkt gespeichert werden?";
+    var messageDiv = document.getElementById("msg");
+    messageDiv.innerHTML ="Soll der Punkt gespeichert werden?";
+    messageDiv.style.display="inline";
   }
 
   addPoints(list, showNewLocation);

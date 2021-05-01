@@ -62,7 +62,8 @@ a {
   padding: 2rem;
   }
 
-.box a.orange-button{
+/* buttons */
+.box a.orange-button, .form-submit-button{
        background-color: #ED8524;
        color: white;
        font-size: 3rem;
@@ -71,7 +72,40 @@ a {
        width: 90%;
        padding: 0.8rem 0rem;
        margin: 2rem 1.6rem;
+       border: 1px solid white;
        }
+
+.box a.orange-button:hover, .form-submit-button:hover {
+    background: #016ABC;
+    cursor: pointer;
+    color: #fff;
+}
+
+input#saveButton.form-submit-button{
+        display: none;
+        background-color: red;
+}
+
+#saveButton:hover{
+        display: none;
+        background-color: green;
+        cursor: pointer;
+}
+
+#msg{
+    display: none;
+    border-radius: 1rem;
+}
+
+#errormsg{
+    display: none;
+    background: red;
+ /*   border-radius: 1rem;
+    padding: 2rem;
+    margin: 1rem;
+    border: 1px solid white;*/
+}
+
 
 .background{
     background-color: #945313;
@@ -111,7 +145,3 @@ a {
      border-radius: 1rem;
 }
 
-
-#saveButton{
- display: none;
-}
