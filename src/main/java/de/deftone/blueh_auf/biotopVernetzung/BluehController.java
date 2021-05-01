@@ -136,7 +136,6 @@ public class BluehController {
 
         if (errorMsg == null) {
             service.saveNewBlueEvent(newBluehLocation);
-            errormessage = "wurde gespeichert. neuer punkt kann eingegeben werden";
             // deshalb muss das objekt hier wieder resetted werden
             this.newBluehLocation = null;
         }

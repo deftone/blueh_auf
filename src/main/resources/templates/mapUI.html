@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Muli">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Pacifico">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lakki+Reddy">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="map/ol.js"></script>
     <script src="map/mapUI.js"></script>
@@ -31,58 +32,41 @@
 
     <section class="box-30">
 
-        <p>Um einen neuen Punkt auf der Karte hinzu zufügen hast du drei Möglichkeiten.</p>
-        <ul>
-            <li>Du kannst die Adresse angeben (Achtung, nur Straße und Hausnummer, keine PLZ und Ort, denn natürlich ist
-                es in
-                Roßdorf/Gundernhausen)
-            </li>
-            <li>Du kannst per copy & paste von Google Maps die Koordinate direkt in das Koordinatenfeld kopieren.
-            </li>
-            <li>Du kannst jede Koordinate einzeln in das entsprechende Feld eingeben</li>
-        </ul>
-
-        <p>Der neue Punkt wird als blauer Punkt angezeigt. Wenn du zufrieden bist kannst du ihn speichern. Oder die
-            Adresse/Koordinaten anpassen und nochmal neu anzeigen lassen.</p>
+        <p>Um einen neuen Punkt auf der Karte hinzu zufügen hast du zwei Möglichkeiten:</p>
 
         <br>
 
         <form id="address" method="POST" th:action="@{/biotopvernetzungUI/newBluehEventAddress}">
             <div>
-                Adresse (Strasse Hausnummer): <input id="addressInput" type="text" name="address"/>
+                <p>Adresse <label class="tooltip"><i class="fa fa-info-circle" aria-hidden="true"></i>
+                    <input type="checkbox"><span>Nur Strasse und Hausnr. Die Straße muss in Roßdorf sein. ZB Erbacher Str. 1</span></label>
+                    eingeben:</p>
+                <input class="form-input-field" id="addressInput" type="text" name="address"/>
                 <input class="form-submit-button" type="submit" value="anzeigen">
-                <!--        <input id="saveButtonAddress" th:formaction="@{/biotopvernetzung/saveNewBluehEvent}" type="submit"-->
-                <!--               value="Auf Karte speichern">-->
             </div>
         </form>
-       <br>
+        <br>
 
         <form id="coordinatesString" method="POST" th:action="@{/biotopvernetzungUI/newBluehEventCoordinatesStr}">
             <div>
-                Koordinaten (49.34, 8.234): <input id="coordinatesInput" type="text" name="coordinates"/>
+                <p>Koordinaten <label class="tooltip"><i class="fa fa-info-circle" aria-hidden="true"></i><input
+                        type="checkbox"><span>Die kannst du mit Rechtsklick von Google Maps kopieren. zB 49.86034, 8.77216</span></label>
+                    eingeben:
+                </p>
+                <input class="form-input-field" id="coordinatesInput" type="text" name="coordinates"/>
                 <input class="form-submit-button" type="submit" value="anzeigen">
             </div>
         </form>
 
-        <br>
-        <form id="coordinates" method="POST" th:action="@{/biotopvernetzungUI/newBluehEventCoordinates}"
-              th:object="${newGeoLocation}">
-            <div>
-                <!--th:field oder type und name, ist das selbe-->
-                Latidude (49.8...): <input id="lat" type="text" name="latitude"/>
-                Longitude (8.7...): <input id="lon" th:field="*{longitude}"/>
-                <input class="form-submit-button" type="submit" value="anzeigen">
-            </div>
-        </form>
-
-        <br>
+           <br>
 
         <form id="save" method="POST" th:action="@{/biotopvernetzungUI/saveNewBluehEvent}"
               th:object="${newGeoLocation}">
             <div>
+                <p>Der neue Punkt wird als blauer Punkt angezeigt. Wenn er in Roßdorf liegt und du zufrieden bist kannst du ihn speichern. Oder die
+                    Adresse bzw. Koordinaten anpassen und nochmal neu anzeigen lassen.</p>
                 <p id="errormsg"></p>
-                <p id="msg"></p>
-                <input id="saveButton" class="form-submit-button" type="submit" value="speichern">
+                <input id="saveButton" class="form-submit-button" type="submit" value="speichern" disabled="disabled">
             </div>
         </form>
 
@@ -103,10 +87,6 @@
 
     // und jetzt java script in map aufrufen, wird gefunden, nix davor ist ok
         initialize_map(list, showNewLocation, coordinatesString, address, errorMsg);
-
-
-
-
 
 </script>
 </body>

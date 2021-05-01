@@ -62,6 +62,59 @@ a {
   padding: 2rem;
   }
 
+/* tool tip*/
+
+.tooltip {
+  position: relative;
+}
+.tooltip span {
+  visibility: hidden;
+  width: 10em;
+  background-color: #ED8524;
+  color: white;
+  text-align: center;
+  border-radius: 1rem;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 9;
+  top: -1em;
+  left:  100%;
+  margin-left:1em;
+  opacity: 0;
+  transition: opacity 1s;
+}
+.tooltip span::after {
+  content: "";
+  position: absolute;
+  top: 1.5em;
+  right: 100%;
+  margin-top: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent black transparent transparent;
+}
+.tooltip input {
+  display:none;
+}
+.tooltip input:hover+span {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* input */
+
+.form-input-field {
+  background-color: #fff;
+  font-size: 2rem;
+  text-align: start;
+  border-radius: 1rem;
+  width: 90%;
+  padding: 0.8rem 0rem;
+  margin: 2rem 1.6rem;
+  border: 1px solid white;
+
+}
+
 /* buttons */
 .box a.orange-button, .form-submit-button{
        background-color: #ED8524;
@@ -82,19 +135,11 @@ a {
 }
 
 input#saveButton.form-submit-button{
-        display: none;
         background-color: red;
 }
 
-#saveButton:hover{
-        display: none;
-        background-color: green;
-        cursor: pointer;
-}
-
-#msg{
-    display: none;
-    border-radius: 1rem;
+input#saveButton.form-submit-button:hover{
+        cursor: auto;
 }
 
 #errormsg{

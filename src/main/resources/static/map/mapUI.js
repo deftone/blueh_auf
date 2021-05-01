@@ -42,10 +42,9 @@ function initialize_map(list, showNewLocation, coordinatesString, address, error
   } else if (showNewLocation!=null) {
   console.log(showNewLocation)
     var saveButton = document.getElementById("saveButton");
-    saveButton.style.display="inline";
-    var messageDiv = document.getElementById("msg");
-    messageDiv.innerHTML ="Soll der Punkt gespeichert werden?";
-    messageDiv.style.display="inline";
+    saveButton.disabled = false;
+    saveButton.style.backgroundColor="green";
+    saveButton.style.cursor="pointer";
   }
 
   addPoints(list, showNewLocation);
