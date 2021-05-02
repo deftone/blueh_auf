@@ -43,14 +43,15 @@ public class BluehService {
         //latitude sollte zw. 49.850 und 49.877 sein
         if (newBlueLocation.getLatitude() < 49.850 ||
                 newBlueLocation.getLatitude() > 49.877) {
-            errorMsg = "Latitude ist nicht innerhalb Rossdorf! Muss zw. 49.850 und 49.877 sein.";
+            errorMsg = "Latitude ist nicht innerhalb Rossdorf! Muss zw. 49.850 und 49.877 sein. ";
             log.error(errorMsg);
         }
 
         //longitude sollte zw. 8.730 und 8.806 sein
         if (newBlueLocation.getLongitude() < 8.730 ||
                 newBlueLocation.getLongitude() > 8.806) {
-            errorMsg += "Longitude ist nicht innerhalb Rossdorf! Muss zw. 8.730 und 8.806 sein.";
+            String error2 = "Longitude ist nicht innerhalb Rossdorf! Muss zw. 8.730 und 8.806 sein.";
+            errorMsg = errorMsg != null ? errorMsg + error2 : error2;
             log.error(errorMsg);
         }
 

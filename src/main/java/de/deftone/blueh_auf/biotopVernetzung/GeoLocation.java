@@ -12,4 +12,10 @@ public class GeoLocation {
     private Double latitude;
     @NonNull
     private Double longitude;
+
+    public GeoLocation(String coordinateString) {
+        int indexOfKomma = coordinateString.indexOf(",");
+        latitude = Double.valueOf(coordinateString.substring(0, indexOfKomma));
+        longitude = Double.valueOf(coordinateString.substring(indexOfKomma + 1));
+    }
 }

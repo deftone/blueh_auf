@@ -69,12 +69,18 @@ public class BluehController {
         try {
             //todo: address validieren, strasse und hausnummer, mehr darf nicht eingegeben werden
             GeoLocation geoLocation = helper.getCoordinatesFromAddress(address + ", 64380 Roßdorf, Germany");
-            // todo: und was, wenn addresse nicht exisitert??
             if (geoLocation != null) {
+                String errorMsg = service.checkCoordinates(geoLocation);
+                if (errorMsg != null) {
+                    errormessage = errorMsg;
+                }
+
                 //ueber model geht es nicht, das wird ueberschrieben
                 this.newBluehLocation = geoLocation;
                 this.address = address;
                 return "redirect:/biotopvernetzungUI";
+            } else {
+                this.errormessage = "Adresse wurde falsch eingeben!";
             }
         } catch (IOException | InterruptedException e) {
             e.printStackTrace();
@@ -86,16 +92,18 @@ public class BluehController {
     @PostMapping("/biotopvernetzungUI/newBluehEventCoordinatesStr")
     public String addCoordinatesString(@RequestParam(value = "coordinates") String coordinates) {
 
-        //todo: aus String ein GeoLocation machen
-        GeoLocation newGeoLocation = new GeoLocation(49.86273557682863, 8.750928081003872);
+        //todo: String  pruefen
+        GeoLocation newGeoLocation = new GeoLocation(coordinates);
 
         String errorMsg = service.checkCoordinates(newGeoLocation);
         if (errorMsg != null) {
             errormessage = errorMsg;
+        } else {
+            // nur wenn kein Fehler den Punkt anzeigen
+            this.newBluehLocation = newGeoLocation;
         }
 
         //ueber model geht es nicht, das wird ueberschrieben
-        this.newBluehLocation = newGeoLocation;
         this.coordinatesString = coordinates;
         return "redirect:/biotopvernetzungUI";
     }

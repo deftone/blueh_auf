@@ -33,16 +33,19 @@ function initialize_map(list, showNewLocation, coordinatesString, address, error
 
   console.log("list.length = " + list.length);
 
+  var saveButton = document.getElementById("saveButton");
   if (errorMsg!=null){
     console.log("errormsg = " + errorMsg);
     //falls koordinaten falsch sind: stehen lassen und fehlermeldung anzeigen
     var errorDiv = document.getElementById("errormsg");
     errorDiv.innerHTML =errorMsg;
     errorDiv.style.display="inline";
+    saveButton.disabled = true;
+    saveButton.style.backgroundColor="red";
+    saveButton.style.cursor="auto";
 
   } else if (showNewLocation!=null) {
     console.log("showNewLoc = " + showNewLocation)
-    var saveButton = document.getElementById("saveButton");
     saveButton.disabled = false;
     saveButton.style.backgroundColor="green";
     saveButton.style.cursor="pointer";

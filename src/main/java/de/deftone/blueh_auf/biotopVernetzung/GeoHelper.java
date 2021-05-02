@@ -42,6 +42,11 @@ public class GeoHelper {
         JsonNode responseJsonNode = mapper.readTree(response);
         JsonNode items = responseJsonNode.get("items");
 
+        //todo hier muss man pruefen, ob in der response auch eine adresse steht!
+        //wenn nicht, dann wird das zentrum genommen (also bei strassen die es nicth gibt)
+        //wenn hausnr nicht existiert, dann wird irgendeine stelle in der strasse genommen
+        // also strasse und hausnummer auf vorhanden sein pruefen!
+
         for (JsonNode item : items) {
             JsonNode position = item.get("position");
             geoLocation.setLatitude(position.get("lat").asDouble());
