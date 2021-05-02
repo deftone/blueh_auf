@@ -29,8 +29,6 @@ public class BluehController {
         List<BluehEvent> allBlueEvents = service.getAllBlueEvents();
         //alle bisherigen blueEvents:
         model.addAttribute("blueEvents", allBlueEvents);
-        //falls neues blueEvent ueber lat und lon eingegeben wird:
-        model.addAttribute("newGeoLocation", new GeoLocation());
         return "map";
     }
 
@@ -39,10 +37,9 @@ public class BluehController {
         List<BluehEvent> allBlueEvents = service.getAllBlueEvents();
         //alle bisherigen blueEvents:
         model.addAttribute("blueEvents", allBlueEvents);
-        //falls neues blueEvent ueber lat und lon eingegeben wird:
-        model.addAttribute("newGeoLocation", new GeoLocation());
 
         if (newBluehLocation != null) {
+            //todo: muss hier nochmal geprueft werden, ob die location in rossdorf ist?
             model.addAttribute("showNewLocation", newBluehLocation);
             //wegen speichern darf es hier nicth zurueckgesetzt werden!
         }
@@ -103,31 +100,12 @@ public class BluehController {
         return "redirect:/biotopvernetzungUI";
     }
 
-    // wenn neues BluehEvent ueber lat und lon coordinates eingetragen wird
-    @PostMapping("/biotopvernetzungUI/newBluehEventCoordinates")
-    public String addCoordinates(@Valid @ModelAttribute GeoLocation newGeoLocation,
-                                 BindingResult bindingResult) {
-
-        if (bindingResult.hasErrors()) {
-            errormessage = "Alle Felder muessen richtig ausgefuellt werden!";
-            return "redirect:/biotopvernetzungUI";
-        }
-
-        String errorMsg = service.checkCoordinates(newGeoLocation);
-        if (errorMsg != null) {
-            errormessage = errorMsg;
-        }
-
-        //ueber model geht es nicht, das wird ueberschrieben
-        this.newBluehLocation = newGeoLocation;
-        return "redirect:/biotopvernetzungUI";
-    }
 
     // wenn neues BluehEvent gespeichert wird (gilt fuer alle 3 eingabe typen)
     @PostMapping("/biotopvernetzungUI/saveNewBluehEvent")
     public String save() {
 
-        //sollte ueberfuessig sein
+        //sollte ueberfuessig sein - nein, wegen adresse nicht!
         String errorMsg = service.checkCoordinates(newBluehLocation);
 
         if (errorMsg != null) {

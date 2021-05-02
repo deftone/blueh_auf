@@ -31,16 +31,17 @@ function initialize_map(list, showNewLocation, coordinatesString, address, error
     })
   });
 
+  console.log("list.length = " + list.length);
 
   if (errorMsg!=null){
-    console.log(errorMsg);
+    console.log("errormsg = " + errorMsg);
     //falls koordinaten falsch sind: stehen lassen und fehlermeldung anzeigen
     var errorDiv = document.getElementById("errormsg");
     errorDiv.innerHTML =errorMsg;
     errorDiv.style.display="inline";
 
   } else if (showNewLocation!=null) {
-  console.log(showNewLocation)
+    console.log("showNewLoc = " + showNewLocation)
     var saveButton = document.getElementById("saveButton");
     saveButton.disabled = false;
     saveButton.style.backgroundColor="green";
@@ -51,8 +52,6 @@ function initialize_map(list, showNewLocation, coordinatesString, address, error
 }
 
 function addPoints(list, showNewLocation){
-    console.log(list.length);
-    console.log(showNewLocation);
 
     for(var i in list) {
         add_map_point(list[i].latitude, list[i].longitude);
@@ -61,18 +60,17 @@ function addPoints(list, showNewLocation){
     if (showNewLocation != null){
       // neuer punkt soll in anderer farbe hinzugefuegt werden
       add_map_point_blue(showNewLocation.latitude, showNewLocation.longitude);
-      //und koordinaten wieder in die boxen schreiben
-      document.getElementById("lat").value = showNewLocation.latitude;
-      document.getElementById("lon").value = showNewLocation.longitude;
     }
 
     // auch die google maps copy & paste coordinaten wieder reinschreiben, falls so eingetragen
     if (coordinatesString != null){
+      console.log("coordinatesString = " + coordinatesString);
       document.getElementById("coordinatesInput").value = coordinatesString;
     }
 
     // und auch die adresse (falls sie eingegeben wurde)
     if (address != null){
+      console.log("address = " + address);
       document.getElementById("addressInput").value = address;
     }
 }
