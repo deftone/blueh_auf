@@ -39,16 +39,35 @@ function initialize_map(list, showNewLocation, coordinatesString, address, error
     //falls koordinaten falsch sind: stehen lassen und fehlermeldung anzeigen
     var errorDiv = document.getElementById("errormsg");
     errorDiv.innerHTML =errorMsg;
-    errorDiv.style.display="inline";
+    errorDiv.style.display="block";
+    errorDiv.style.borderRadius="1rem";
+    errorDiv.style.padding="2rem";
+    errorDiv.style.margin="1rem";
+    errorDiv.style.backgroundColor="red";
+    errorDiv.style.border="1px solid white";
+
     saveButton.disabled = true;
-    saveButton.style.backgroundColor="red";
+    saveButton.style.backgroundColor="grey";
     saveButton.style.cursor="auto";
 
   } else if (showNewLocation!=null) {
     console.log("showNewLoc = " + showNewLocation)
     saveButton.disabled = false;
-    saveButton.style.backgroundColor="green";
+    saveButton.style.backgroundColor="#FFDD1F";
+    saveButton.style.color="#056600";
     saveButton.style.cursor="pointer";
+
+    // hover simulieren
+    saveButton.addEventListener("mouseover", function( event ) {
+    // highlight the mouseover target
+    event.target.style.color = "white";
+    event.target.style.backgroundColor = "#D6BA1A";
+    // reset the color after a short delay
+    setTimeout(function() {
+          event.target.style.color = "#056600";
+          event.target.style.backgroundColor = "#FFDD1F";
+        }, 1000);
+    }, false);
   }
 
   addPoints(list, showNewLocation);

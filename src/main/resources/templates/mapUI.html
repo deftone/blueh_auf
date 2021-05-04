@@ -21,6 +21,7 @@
 <!--todo button fuer log out, auf diesen endpoint http://localhost:8080/logout-->
 
 <h1>Biotopvernetzung - Mitmachen</h1>
+<h2>Trage einen Blühpunkte für Roßdorf/Gundernhausen ein</h2>
 
 
 <section class="box">
@@ -35,7 +36,6 @@
     <section class="box-30">
 
         <p>Um einen neuen Punkt auf der Karte hinzu zufügen hast du zwei Möglichkeiten:</p>
-
         <br>
 
         <form id="address" method="POST" th:action="@{/biotopvernetzungUI/newBluehEventAddress}">
@@ -44,7 +44,7 @@
                     <input type="checkbox"><span>Nur Strasse und Hausnr. Die Straße muss in Roßdorf sein. ZB Erbacher Str. 1</span></label>
                     eingeben:</p>
                 <input class="form-input-field" id="addressInput" type="text" name="address"/>
-                <input class="form-submit-button" type="submit" value="anzeigen">
+                <input class="form-submit-button blue-button" type="submit" value="anzeigen">
             </div>
         </form>
         <br>
@@ -56,7 +56,7 @@
                     eingeben:
                 </p>
                 <input class="form-input-field" id="coordinatesInput" type="text" name="coordinates"/>
-                <input class="form-submit-button" type="submit" value="anzeigen">
+                <input class="form-submit-button orange-button" type="submit" value="anzeigen">
             </div>
         </form>
 
@@ -65,9 +65,9 @@
         <form id="save" method="POST" th:action="@{/biotopvernetzungUI/saveNewBluehEvent}"
               th:object="${newGeoLocation}">
             <div>
+                <p id="errormsg"></p>
                 <p>Der neue Punkt wird als blauer Punkt angezeigt. Wenn er in Roßdorf liegt und du zufrieden bist kannst du ihn speichern. Oder die
                     Adresse bzw. Koordinaten anpassen und nochmal neu anzeigen lassen.</p>
-                <p id="errormsg"></p>
                 <input id="saveButton" class="form-submit-button" type="submit" value="speichern" disabled="disabled">
             </div>
         </form>

@@ -1,3 +1,16 @@
+/* colours:
+#699926; //oliviges gruen (alt)
+#2FA803; //oliviges gruen (monochromatisch zu dunklem)
+#258203; //dunkles oliviges gruen
+
+#BF00C9; //helleres lila
+#7C0082; //dunkleres lila
+
+
+#ED8524; //orange
+#0080ff ; // mittleres blau
+*/
+
 html {
   font-size: 10px;
   /*easy to calculate: 1rem=10px*/
@@ -7,26 +20,42 @@ html, body {
          width: 100%;
          height: 100%;
          margin: 0;
-         background-color: #699926; // dunkleres gruen
-
-         font-size: 16rem;
+         background-color: #2FA803; /*oliviges gruen*/
          font-family: Muli, sans-serif;
         }
 
-h1 {
-  font-size: 5rem;
+/*h1 und h2 = (sub)titles*/
+h1, h2 {
   color: white;
-  padding: 2rem;
   align: center;
   text-align: center;
-  font-family: 'Pacifico', cursive;
   text-shadow: -1px -1px 0 #1b5764, 1px -1px 0 #1b5764, -1px 1px 0 #1b5764, 1px 1px 0 #1b5764;
   }
 
+h1 {
+  font-size: 5rem;
+  padding: 2rem 2rem 3rem 2rem;
+  font-family: 'Pacifico', cursive;
+  }
+
+h2{
+  font-size: 3rem;
+}
+
+/*aller andere text*/
 form, div, p, ul, li{
   font-size: 2rem;
   line-height: 1.25;
   color: white;
+}
+
+.bold{
+    font-weight: bold;
+}
+
+.boldAndPadding{
+    font-weight: bold;
+    padding-bottom: 1rem;
 }
 
 ol,
@@ -43,22 +72,10 @@ a {
   text-decoration: none;
 }
 
-/* colours:
-#E0A66C; // helles braun
-#945313; // dunkles braun
-#5CD9FF; // helles blau
-#38B9E0; // mittleres blau
-#0F7694; // dunkels blau
-#ED8524; //orange
-#0080ff ; // mittleres blau
-*/
-
-
 .box {
   display: flex;
   justify-content: center;
-  background-color: #699926; // dunkleres gruen
-  //border: solid, black, 1px;
+  background-color: #2FA803; /*oliviges gruen*/
   padding: 2rem;
   }
 
@@ -70,7 +87,7 @@ a {
 .tooltip span {
   visibility: hidden;
   width: 10em;
-  background-color: #ED8524;
+  background-color: #ED8524; /*orange*/
   color: white;
   text-align: center;
   border-radius: 1rem;
@@ -116,8 +133,7 @@ a {
 }
 
 /* buttons */
-.box a.orange-button, .form-submit-button{
-       background-color: #ED8524;
+.box a.button, .form-submit-button{
        color: white;
        font-size: 3rem;
        text-align: center;
@@ -128,27 +144,52 @@ a {
        border: 1px solid white;
        }
 
-.box a.orange-button:hover, .form-submit-button:hover {
-    background: #016ABC;
+.orange-button{
+       background-color: #F59200; /*orange*/
+      }
+
+.lila-button{
+       background-color: #BF00C9; /*lila*/
+      }
+
+.blue-button{
+       background-color: #0A82FC; /*blau*/
+      }
+
+
+.box a.button:hover, .form-submit-button:hover {
     cursor: pointer;
     color: #fff;
 }
 
+.lila-button:hover {
+    background: #7C0082; /*dunkles lila*/
+}
+
+.blue-button:hover{
+       background-color: #0865C2; /*dunkles blau*/
+      }
+
+.orange-button:hover{
+       background-color: #C27400; /*dunkles orange*/
+      }
+
 input#saveButton.form-submit-button{
-        background-color: red;
+       background-color: grey;
 }
 
 input#saveButton.form-submit-button:hover{
         cursor: auto;
 }
 
+input#saveButton.form-submit-button:focus{
+        background-color: #D6BA1A;
+        color: white;
+}
+
 #errormsg{
     display: none;
     background: red;
- /*   border-radius: 1rem;
-    padding: 2rem;
-    margin: 1rem;
-    border: 1px solid white;*/
 }
 
 
@@ -158,6 +199,7 @@ input#saveButton.form-submit-button:hover{
     }
 
 .box-30, .box-70 {
+    background-color: #258203; /*dunkles oliviges gruen*/
     display: inline-flex;
     flex-direction: column;
     justify-content: center;
