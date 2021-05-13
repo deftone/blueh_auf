@@ -1,13 +1,43 @@
 <!DOCTYPE HTML>
-<html>
+<html xmlns:th="https://www.thymeleaf.org">
 <head>
     <title>Roßdorf blüht auf</title>
     <link rel="stylesheet" href="style.css" th:href="@{/style.css}"/>
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.0/css/bootstrap.min.css">
 
 
 </head>
 <body>
 <h1>Rossdorf blueht auf</h1>
 <p>Hier entsteht was neues!</p>
+
+<div th:if="${user != null}">
+    Hallo <span th:text="${user.firstname}"></span>
+</div>
+
+
+<div class="container">
+
+    <div class="container">
+        <h1>Biotopvernetzung</h1>
+        <a class="btn btn-primary" href="/biotopvernetzung">anschauen</a>
+    </div>
+
+    <div class="container">
+        <h1>Mitmachen? Dann melde dich an!</h1>
+        <a class="btn btn-primary" href="/login">Anmelden</a>
+    </div>
+
+    <div class="container">
+        <h1>Noch keinen Account? Dann registrier dich!</h1>
+        <a class="btn btn-primary" href="/user/register">Registrieren</a>
+    </div>
+
+    <div class="container">
+        <h1>Ausloggen</h1>
+        <a class="btn btn-primary" href="/logout">Abmelden</a>
+    </div>
+</div>
 </body>
 </html>

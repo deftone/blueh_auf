@@ -1,0 +1,42 @@
+
+
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <title>Login</title>
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.0/css/bootstrap.min.css">
+</head>
+<body >
+
+<div class="container">
+    <br>
+    <h1>Login</h1>
+    <form name="f" th:action="@{/user/login}" method="post">
+        <fieldset>
+            <div th:if="${param.error}" class="alert alert-error">
+                Invalid username and password.
+            </div>
+
+            <div th:if="${param.logout}" class="alert alert-success">
+                You have been logged out.
+            </div>
+
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username"/>
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password"/>
+
+<!--            <div class="form-actions">-->
+                <button class="btn btn-primary" type="submit">Login</button>
+<!--            </div>-->
+        </fieldset>
+    </form>
+</div>
+
+<div class="container">
+    <h1>Noch keinen Account? Dann registrier dich!</h1>
+    <a class="btn btn-primary" href="/user/register">Registrieren</a>
+</div>
+
+</body>
+</html>

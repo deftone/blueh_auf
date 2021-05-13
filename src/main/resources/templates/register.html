@@ -1,14 +1,15 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Register</title>
+    <title>Registrieren</title>
     <link rel="stylesheet"
           href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.0/css/bootstrap.min.css">
 </head>
 <body>
 <div class="container">
-    <h1>Register</h1>
+    <br>
+    <h1>Registrier dich um mitmachen zu können!</h1>
     <form method="POST"
-          th:action="@{/user/register}"
+          th:action="@{/user/registerNewUser}"
           th:object="${user}">
         <div th:replace="fragments/input :: input('text','Vorname', 'firstname')"/>
         <div th:replace="fragments/input :: input('text','Nachname', 'lastname')"/>
