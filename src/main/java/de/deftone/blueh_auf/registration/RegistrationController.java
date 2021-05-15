@@ -13,7 +13,6 @@ import javax.validation.Valid;
 import java.util.List;
 
 @Controller
-@RequestMapping("/user")
 @RequiredArgsConstructor
 public class RegistrationController {
 
@@ -23,10 +22,10 @@ public class RegistrationController {
 
     // wenn man es customizen moechte:
     //https://docs.spring.io/spring-security/site/docs/4.2.20.RELEASE/guides/html5/form-javaconfig.html
-//    @GetMapping("/login")
-//    public String login() {
-//        return "login";
-//    }
+    @GetMapping("/login")
+    public String login() {
+        return "login";
+    }
 
     @GetMapping("/register")
     public String showRegistration(Model model) {

@@ -19,9 +19,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .csrf()
                 .and()
-                .formLogin();
-        //wenn man es customizen moechte
-               // .loginPage("/user/login");
+                .formLogin()
+                //wenn man es customizen moechte:
+                .loginPage("/login");
 
 
     }

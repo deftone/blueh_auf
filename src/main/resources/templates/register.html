@@ -3,13 +3,21 @@
     <title>Registrieren</title>
     <link rel="stylesheet"
           href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.0/css/bootstrap.min.css">
+    <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+    <script>
+        $(function(){
+         $('.navigation').load("navigation");
+         });
+    </script>
 </head>
 <body>
+<div class="navigation"></div>
+
 <div class="container">
     <br>
     <h1>Registrier dich um mitmachen zu können!</h1>
     <form method="POST"
-          th:action="@{/user/registerNewUser}"
+          th:action="@{/registerNewUser}"
           th:object="${user}">
         <div th:replace="fragments/input :: input('text','Vorname', 'firstname')"/>
         <div th:replace="fragments/input :: input('text','Nachname', 'lastname')"/>

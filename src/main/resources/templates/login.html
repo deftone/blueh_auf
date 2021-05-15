@@ -1,42 +1,87 @@
-
-
-<html xmlns:th="https://www.thymeleaf.org">
+<!DOCTYPE html>
+<html lang="de" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
-    <title>Login</title>
-    <link rel="stylesheet"
-          href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.0/css/bootstrap.min.css">
+    <meta charset="utf-8">
+    <title>Roßdorf blüht auf</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="style.css"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Muli">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Pacifico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+    <script>
+        $(function(){
+         $('.navigation').load("navigation");
+         });
+    </script>
 </head>
-<body >
 
-<div class="container">
-    <br>
-    <h1>Login</h1>
-    <form name="f" th:action="@{/user/login}" method="post">
-        <fieldset>
-            <div th:if="${param.error}" class="alert alert-error">
-                Invalid username and password.
-            </div>
+<body>
 
-            <div th:if="${param.logout}" class="alert alert-success">
-                You have been logged out.
-            </div>
+<div class="navigation"></div>
 
-            <label for="username">Username</label>
-            <input type="text" id="username" name="username"/>
-            <label for="password">Password</label>
-            <input type="password" id="password" name="password"/>
+<main>
+    <h1>Anmelden</h1>
+    <h2>... oder Registrieren</h2>
 
-<!--            <div class="form-actions">-->
-                <button class="btn btn-primary" type="submit">Login</button>
-<!--            </div>-->
-        </fieldset>
-    </form>
-</div>
+    <section class="box">
 
-<div class="container">
-    <h1>Noch keinen Account? Dann registrier dich!</h1>
-    <a class="btn btn-primary" href="/user/register">Registrieren</a>
-</div>
+        <!--ANMELDEN-->
+        <section class="box-50">
+            <form name="f" th:action="@{/login}" method="post">
+                <fieldset>
+                    <div th:if="${param.error}" class="alert alert-error">
+                        Invalid username and password.
+                    </div>
+
+                    <div th:if="${param.logout}" class="alert alert-success">
+                        You have been logged out.
+                    </div>
+
+                    <label for="username">Benutzername</label>
+                    <input class="form-input-field" type="text" id="username" name="username"/>
+
+                    <label for="password">Passwort</label>
+                    <input class="form-input-field" type="password" id="password" name="password"/>
+
+                    <button class="form-submit-button orange-button" type="submit">Anmelden</button>
+                </fieldset>
+            </form>
+
+        </section>
+
+        <!--REGISTRIEREN-->
+        <section class="box-50">
+            <form method="POST"
+                  th:action="@{/registerNewUser}"
+                  th:object="${user}">
+                <fieldset>
+                <label for="firstname">Vorname</label>
+                <input class="form-input-field" type="text" id="firstname" name="firstname"/>
+
+                <label for="lastname">Nachname</label>
+                <input class="form-input-field" type="text" id="lastname" name="lastname"/>
+
+                <label for="email">eMail</label>
+                <input class="form-input-field" type="text" id="email" name="email"/>
+
+                <label for="username">Benutzername</label>
+                <input class="form-input-field" type="text" id="username" name="username"/>
+
+                <label for="password">Passwort</label>
+                <input class="form-input-field" type="password" id="password" name="password"/>
+
+                <br/>
+                <div class="form-row">
+                    <button class="form-submit-button orange-button" type="submit">Registrieren</button>
+                </div>
+                </fieldset>
+            </form>
+        </section>
+    </section>
+</main>
+
 
 </body>
 </html>
