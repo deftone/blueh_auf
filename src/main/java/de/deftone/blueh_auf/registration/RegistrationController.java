@@ -61,7 +61,8 @@ public class RegistrationController {
                     "Beim Speichern kam es zu einem Problem. Bitte katrin.rose@posteo.de kontaktieren."));
             return "register";
         }
-        return "redirect:/home/" + user.getUsername();
+        //todo hier ein pop up oder so etwas? das andere macht probleme beim einbinden vom nav
+        return "redirect:/";
     }
 
     @ResponseBody

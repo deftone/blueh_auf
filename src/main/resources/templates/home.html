@@ -3,40 +3,23 @@
 <head>
     <title>Roßdorf blüht auf</title>
     <link rel="stylesheet" href="style.css" th:href="@{/style.css}"/>
-    <link rel="stylesheet"
-          href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Muli">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Pacifico">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+    <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+    <script>
+        $(function(){
+         $('.navigation').load("navigation");
+         });
+    </script>
 </head>
 <body>
-<h1>Rossdorf blüht auf</h1>
 
-
-<div th:if="${user != null}">
-    Hallo <span th:text="${user.firstname}"></span>
-</div>
+<div class="navigation"></div>
 
 <div class="container">
 
-    <div class="container">
-        <h1><a  class="btn btn-primary" href="/biotopvernetzung">Biotopvernetzung</a></h1>
-    </div>
-
-    <div class="container">
-        <h1><a class="btn btn-primary" href="/login">Mitmachen? Dann melde dich an!</a></h1>
-    </div>
-
-    <div class="container">
-        <h1><a class="btn btn-primary" href="/user/register">Noch keinen Account? Dann registrier dich!</a></h1>
-
-    </div>
-
-    <div class="container">
-        <h1><a class="btn btn-primary" href="/logout">Ausloggen</a></h1>
-
-    </div>
 </div>
 </body>
 </html>

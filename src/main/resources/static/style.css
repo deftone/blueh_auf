@@ -27,3 +27,60 @@ h1 {
 h1.a.btn.btn-primary {
   font-size: 5rem;
 }
+
+#mainNav {
+  font-family: 'Cabin', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  margin-bottom: 0;
+  text-transform: initial;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  padding-top: 10px;
+  padding-bottom: 10px;
+  -webkit-transition: background 0.3s ease-in-out, padding-top 0.3s ease-in-out, padding-bottom 0.3s;
+  -moz-transition: background 0.3s ease-in-out, padding-top 0.3s ease-in-out, padding-bottom 0.3s;
+  transition: background 0.3s ease-in-out, padding-top 0.3s ease-in-out, padding-bottom 0.3s;
+  letter-spacing: 1px;
+  border-bottom: none;
+  background: #2FA803;
+  opacity: .7; }
+  #mainNav .navbar-toggler {
+    font-size: 1.4rem;
+    padding: 1px;
+    color: white;
+    border: 1px solid white; }
+  #mainNav .navbar-brand {
+    font-weight: 700;
+    font-size: 2rem;
+    font-family: 'Pacifico', cursive;
+    text-transform: initial;
+  }
+  #mainNav a {
+    color: white;
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px  1px 0 #000, 1px  1px 0 #000; }
+  #mainNav .navbar-nav .nav-item {
+    -webkit-transition: background 0.3s ease-in-out;
+    -moz-transition: background 0.3s ease-in-out;
+    transition: background 0.3s ease-in-out; }
+    #mainNav .navbar-nav .nav-item:hover {
+      color: fade(white, 80%);
+      outline: none;
+      background-color: transparent; }
+    #mainNav .navbar-nav .nav-item:active, #mainNav .navbar-nav .nav-item:focus {
+      outline: none;
+      background-color: transparent; }
+  #mainNav.navbar-shrink {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    opacity: 1; }
+  #mainNav .nav-link.active {
+    outline: none;
+    background-color: rgba(255, 255, 255, 0.3); }
+    #mainNav .nav-link.active:hover {
+      color: white; }
+  @media only screen and (max-width: 991px) {
+    #mainNav.navbar-shrink {
+      padding-top: 10px;
+      padding-bottom: 10px;
+      background: #2FA803;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+      opacity: 1; } }

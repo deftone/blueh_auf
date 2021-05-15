@@ -7,14 +7,23 @@
     <link rel="stylesheet" href="reset.css">
     <link rel="stylesheet" href="map/ol.css"/>
     <link rel="stylesheet" href="map/map.css"/>
+    <link rel="stylesheet" href="style.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Muli">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Pacifico">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="map/ol.js"></script>
     <script src="map/map.js"></script>
+    <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+    <script>
+        $(function(){
+         $('.navigation').load("navigation");
+         });
+    </script>
 </head>
 
 <body>
+<div class="navigation"></div>
 
 <h1>Biotopvernetzung</h1>
 <h2>Alle Blühpunkte in Roßdorf und Gundernhausen auf einer Karte</h2>
