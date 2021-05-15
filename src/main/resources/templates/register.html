@@ -1,8 +1,14 @@
+<!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Registrieren</title>
-    <link rel="stylesheet"
-          href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.0/css/bootstrap.min.css">
+    <meta charset="utf-8">
+    <title>Roßdorf blüht auf</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="style.css"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Muli">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Pacifico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
     <script>
         $(function(){
@@ -13,22 +19,30 @@
 <body>
 <div class="navigation"></div>
 
-<div class="container">
-    <br>
-    <h1>Registrier dich um mitmachen zu können!</h1>
-    <form method="POST"
-          th:action="@{/registerNewUser}"
-          th:object="${user}">
-        <div th:replace="fragments/input :: input('text','Vorname', 'firstname')"/>
-        <div th:replace="fragments/input :: input('text','Nachname', 'lastname')"/>
-        <div th:replace="fragments/input :: input('text','Email', 'email')"/>
-        <div th:replace="fragments/input :: input('text','Benutzername', 'username')"/>
-        <div th:replace="fragments/input :: input('password','Passwort', 'password')"/>
-        <br/>
-        <div class="form-row">
-            <button class="btn btn-primary" type="submit">Register</button>
-        </div>
-    </form>
-</div>
+<main>
+    <div class="container">
+        <br>
+        <h2>Bitte Felder richtig ausfuellen:</h2>
+        <section class="box">
+<!--todo: das hier mittiger machen-->
+            <!--ANMELDEN-->
+            <section class="box-50">
+                <form method="POST"
+                      th:action="@{/registerNewUser}"
+                      th:object="${user}">
+                    <div th:replace="fragments/input :: input('text','Vorname', 'firstname')"/>
+                    <div th:replace="fragments/input :: input('text','Nachname', 'lastname')"/>
+                    <div th:replace="fragments/input :: input('text','Email', 'email')"/>
+                    <div th:replace="fragments/input :: input('text','Benutzername', 'username')"/>
+                    <div th:replace="fragments/input :: input('password','Passwort', 'password')"/>
+                    <br/>
+                    <div class="form-row">
+                        <button class="form-submit-button orange-button" type="submit">Register</button>
+                    </div>
+                </form>
+            </section>
+        </section>
+    </div>
+</main>
 </body>
 </html>
