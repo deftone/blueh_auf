@@ -5,3 +5,25 @@ html, body {
          margin: 0;
         }
 
+body{
+         background-image: url("images/Logo.jpg");
+}
+
+
+/*h1 und h2 = (sub)titles*/
+h1, h2 {
+  color: white;
+  align: center;
+  text-align: center;
+  text-shadow: -1px -1px 0 #1b5764, 1px -1px 0 #1b5764, -1px 1px 0 #1b5764, 1px 1px 0 #1b5764;
+  }
+
+h1 {
+  font-size: 5rem;
+  padding: 2rem 2rem 3rem 2rem;
+  font-family: 'Pacifico', cursive;
+  }
+
+h1.a.btn.btn-primary {
+  font-size: 5rem;
+}
