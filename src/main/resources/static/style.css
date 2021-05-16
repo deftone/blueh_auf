@@ -328,7 +328,7 @@ input#saveButton.form-submit-button:focus{
   padding: 2rem;
   }
 
-.box-30, .box-50, .box-70 {
+.box-30, .box-50, .box-70, .text-unten {
     background-color: #258203; /*dunkles oliviges gruen*/
     display: flex;
     flex-direction: column;
@@ -355,6 +355,12 @@ input#saveButton.form-submit-button:focus{
 .box-70 {
     width: 75%;
     }
+
+.text-unten{
+    align-items: center;
+    width: 95%;
+    padding-bottom: 1rem;
+}
 
 .map {
     border-radius: 1rem;

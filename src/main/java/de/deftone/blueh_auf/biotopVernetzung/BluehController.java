@@ -3,13 +3,10 @@ package de.deftone.blueh_auf.biotopVernetzung;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import javax.validation.Valid;
 import java.io.IOException;
 import java.util.List;
 
@@ -39,14 +36,13 @@ public class BluehController {
         model.addAttribute("blueEvents", allBlueEvents);
 
         if (newBluehLocation != null) {
-            //todo: muss hier nochmal geprueft werden, ob die location in rossdorf ist?
+            //wenn es soweit kommt, dann ist die newBlueLocation richtig
             model.addAttribute("showNewLocation", newBluehLocation);
-            //wegen speichern darf es hier nicth zurueckgesetzt werden!
+            //wegen speichern darf es hier nicht zurueckgesetzt werden!
         }
 
         if (coordinatesString != null){
             model.addAttribute("coordinatesString", coordinatesString);
-            //hier oder nach speichern? was ist besser?
             coordinatesString = null;
         }
 
@@ -67,20 +63,35 @@ public class BluehController {
     public String addAddress(@RequestParam(value = "address") String address) {
 
         try {
-            //todo: address validieren, strasse und hausnummer, mehr darf nicht eingegeben werden
+            //pruefen ob die adresse richtig eingegeben wurde
+            if (!service.addressStringOk(address)){
+                this.newBluehLocation = null;
+                this.errormessage = "Bitte Adresse im richtigen Format angeben. zB Erbacher Str. 1";
+                this.address = address;
+                return "redirect:/biotopvernetzungUI";
+            }
+
             GeoLocation geoLocation = helper.getCoordinatesFromAddress(address + ", 64380 Roßdorf, Germany");
             if (geoLocation != null) {
                 String errorMsg = service.checkCoordinates(geoLocation);
                 if (errorMsg != null) {
-                    errormessage = errorMsg;
+                    //falls koordinaten trotz address pruefung vorab falsch sind
+                    this.newBluehLocation = null;
+                    this.errormessage = errorMsg;
+                    this.address = address;
+                    return "redirect:/biotopvernetzungUI";
                 }
-
+                // alles ok!
                 //ueber model geht es nicht, das wird ueberschrieben
                 this.newBluehLocation = geoLocation;
                 this.address = address;
                 return "redirect:/biotopvernetzungUI";
             } else {
-                this.errormessage = "Adresse wurde falsch eingeben!";
+                //geolocation wurde nicht ermittelt
+                this.newBluehLocation = null;
+                this.errormessage = "Adresse wurde in Roßdorf/Gundernhausen nicht gefunden. Bitte Straße und Hausnummer prüfen.";
+                this.address = address;
+                return "redirect:/biotopvernetzungUI";
             }
         } catch (IOException | InterruptedException e) {
             e.printStackTrace();
@@ -92,19 +103,26 @@ public class BluehController {
     @PostMapping("/biotopvernetzungUI/newBluehEventCoordinatesStr")
     public String addCoordinatesString(@RequestParam(value = "coordinates") String coordinates) {
 
-        //todo: String  pruefen
+        if (!service.coordinateStringOk(coordinates)){
+            newBluehLocation = null;
+            errormessage = "Bitte Koordinaten im richtigen Format und aus Roßdorf angeben. zB 49.858, 8.756";
+            coordinatesString = coordinates;
+            return "redirect:/biotopvernetzungUI";
+        }
+
         GeoLocation newGeoLocation = new GeoLocation(coordinates);
 
         String errorMsg = service.checkCoordinates(newGeoLocation);
         if (errorMsg != null) {
+            newBluehLocation = null;
             errormessage = errorMsg;
         } else {
             // nur wenn kein Fehler den Punkt anzeigen
-            this.newBluehLocation = newGeoLocation;
+            newBluehLocation = newGeoLocation;
         }
 
         //ueber model geht es nicht, das wird ueberschrieben
-        this.coordinatesString = coordinates;
+        coordinatesString = coordinates;
         return "redirect:/biotopvernetzungUI";
     }
 

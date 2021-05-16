@@ -27,62 +27,66 @@
 <div class="navigation"></div>
 
 <main>
-<h1>Biotopvernetzung - Mitmachen</h1>
-<h2>Trage einen Blühpunkte für Roßdorf/Gundernhausen ein</h2>
+    <h1>Biotopvernetzung - Mitmachen</h1>
+    <h2>Trage einen Blühpunkte für Roßdorf/Gundernhausen ein</h2>
 
 
-<section class="box">
+    <section class="box">
 
-    <section class="box-70">
-        <div class="map">
-            <div id="map"></div>
-        </div>
+        <section class="box-70">
+            <div class="map">
+                <div id="map"></div>
+            </div>
+        </section>
 
+        <section class="box-30">
+            <p>Um einen neuen Punkt auf der Karte hinzu zufügen hast du zwei Möglichkeiten:</p>
+            <br>
+            <form id="address" method="POST" th:action="@{/biotopvernetzungUI/newBluehEventAddress}">
+                <div>
+                    <p>Adresse <label class="tooltip"><i class="fa fa-info-circle" aria-hidden="true"></i>
+                        <input type="checkbox"><span>Nur Strasse und Hausnr. Die Straße muss in Roßdorf sein. ZB Erbacher Str. 1</span></label>
+                        eingeben:</p>
+                    <input class="form-input-field" id="addressInput" type="text" name="address"/>
+                    <input class="form-submit-button blue-button" type="submit" value="anzeigen">
+                </div>
+            </form>
+            <br>
+
+            <form id="coordinatesString" method="POST" th:action="@{/biotopvernetzungUI/newBluehEventCoordinatesStr}">
+                <div>
+                    <p>Koordinaten <label class="tooltip"><i class="fa fa-info-circle" aria-hidden="true"></i><input
+                            type="checkbox"><span>Die kannst du mit Rechtsklick von Google Maps kopieren. zB 49.86034, 8.77216</span></label>
+                        eingeben:
+                    </p>
+                    <input class="form-input-field" id="coordinatesInput" type="text" name="coordinates"/>
+                    <input class="form-submit-button blue-button" type="submit" value="anzeigen">
+                </div>
+            </form>
+
+            <br>
+
+            <form id="save" method="POST" th:action="@{/biotopvernetzungUI/saveNewBluehEvent}"
+                  th:object="${newGeoLocation}">
+                <div>
+                    <p id="errormsg"></p>
+                    <p>Der neue Punkt wird als blauer Punkt angezeigt. Wenn er in Roßdorf liegt und du zufrieden bist
+                        kannst du ihn speichern. Oder die
+                        Adresse bzw. Koordinaten anpassen und nochmal neu anzeigen lassen.</p>
+                    <input id="saveButton" class="form-submit-button" type="submit" value="speichern"
+                           disabled="disabled">
+                </div>
+            </form>
+        </section>
     </section>
 
-    <section class="box-30">
-
-        <p>Um einen neuen Punkt auf der Karte hinzu zufügen hast du zwei Möglichkeiten:</p>
-        <br>
-
-        <form id="address" method="POST" th:action="@{/biotopvernetzungUI/newBluehEventAddress}">
-            <div>
-                <p>Adresse <label class="tooltip"><i class="fa fa-info-circle" aria-hidden="true"></i>
-                    <input type="checkbox"><span>Nur Strasse und Hausnr. Die Straße muss in Roßdorf sein. ZB Erbacher Str. 1</span></label>
-                    eingeben:</p>
-                <input class="form-input-field" id="addressInput" type="text" name="address"/>
-                <input class="form-submit-button blue-button" type="submit" value="anzeigen">
-            </div>
-        </form>
-        <br>
-
-        <form id="coordinatesString" method="POST" th:action="@{/biotopvernetzungUI/newBluehEventCoordinatesStr}">
-            <div>
-                <p>Koordinaten <label class="tooltip"><i class="fa fa-info-circle" aria-hidden="true"></i><input
-                        type="checkbox"><span>Die kannst du mit Rechtsklick von Google Maps kopieren. zB 49.86034, 8.77216</span></label>
-                    eingeben:
-                </p>
-                <input class="form-input-field" id="coordinatesInput" type="text" name="coordinates"/>
-                <input class="form-submit-button orange-button" type="submit" value="anzeigen">
-            </div>
-        </form>
-
-           <br>
-
-        <form id="save" method="POST" th:action="@{/biotopvernetzungUI/saveNewBluehEvent}"
-              th:object="${newGeoLocation}">
-            <div>
-                <p id="errormsg"></p>
-                <p>Der neue Punkt wird als blauer Punkt angezeigt. Wenn er in Roßdorf liegt und du zufrieden bist kannst du ihn speichern. Oder die
-                    Adresse bzw. Koordinaten anpassen und nochmal neu anzeigen lassen.</p>
-                <input id="saveButton" class="form-submit-button" type="submit" value="speichern" disabled="disabled">
-            </div>
-        </form>
-
+    <section class="text-unten">
+    <p> <i class="fa fa-info-circle" aria-hidden="true"></i> Tipp zum Kopieren von Koordinaten: Gehe auf Google Maps. Suche dort den gewünschten Ort. Klicke mit dem
+        Cursor auf dem Ort stehend auf die rechte Maustaste. Es erscheint das Contextmenu. Der oberste Eintrag
+        dieses Menus sind die Koordinaten. Jetzt kannst du diese mit der linken Maustaste anklicken. Das kopiert
+        sie automatisch in deine Zwischenablage. Jetzt kannst du sie bequem hier einfügen.
+    </p>
     </section>
-
-
-</section>
 </main>
 
 <!--script fuer map kann erst nach map div ausgefuehrt werden!-->

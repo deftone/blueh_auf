@@ -18,6 +18,30 @@ public class BluehService {
         return repo.findAll();
     }
 
+    public boolean addressStringOk(String address) {
+        if (address == null || address.isEmpty() || address.isBlank())
+            return false;
+        //* = Occurs zero or more times
+        //+ = Occurs one or more times
+        // pruefen ob mit komma statt punkt eingegeben, falls ja, ersetzen
+        String pattern = "(\\w+ *-*.*)+\\d+";
+        return address.trim().matches(pattern);
+    }
+
+    public boolean coordinateStringOk(String coordinates) {
+        if (coordinates == null || coordinates.isEmpty() || coordinates.isBlank())
+            return false;
+
+        // pruefen ob mit komma statt punkt eingegeben, falls ja, ersetzen
+        String pattern = "49,\\d+, *8,\\d+";
+        if (coordinates.trim().matches(pattern)) {
+            coordinates = coordinates.replace("49,", "49.").replace("8,", "8.");
+        }
+        //die Koordinaten muessen 49.8xxxx 8.xxxxx sein
+        pattern = "49.\\d+, *8.\\d+";
+        return coordinates.trim().matches(pattern);
+    }
+
     /**
      * tiho3Nge#geo
      * https://developer.mapquest.com/documentation/open/geocoding-api/
