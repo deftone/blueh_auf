@@ -110,6 +110,14 @@ nav li {
   list-style: none;
   float: left; }
 
+#login{
+    display: block;
+}
+
+#logout{
+    display: none;
+}
+
 nav li a {
     text-align: center; }
 

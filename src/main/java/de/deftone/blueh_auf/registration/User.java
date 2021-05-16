@@ -30,10 +30,18 @@ public class User {
 
     //allArgsConstr. geht wegen version nicht mehr, deshalb so:
     public User(String username, String password, String firstname, String lastname, String email) {
-        this.username = username;
-        this.password = password;
-        this.firstname = firstname;
-        this.lastname = lastname;
-        this.email = email;
+        this.username = username.trim();
+        this.password = password.trim();
+        this.firstname = firstname.trim();
+        this.lastname = lastname.trim();
+        this.email = email.trim();
+    }
+
+    public void trimUser(){
+        this.username = username.trim();
+        this.password = password.trim();
+        this.firstname = firstname.trim();
+        this.lastname = lastname.trim();
+        this.email = email.trim();
     }
 }

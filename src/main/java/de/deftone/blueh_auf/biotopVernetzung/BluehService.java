@@ -12,10 +12,10 @@ import java.util.List;
 @RequiredArgsConstructor
 public class BluehService {
 
-    private final BluehEventRepo repo;
+    private final BluehEventRepo bluehEventRepo;
 
     public List<BluehEvent> getAllBlueEvents() {
-        return repo.findAll();
+        return bluehEventRepo.findAll();
     }
 
     public boolean addressStringOk(String address) {
@@ -83,9 +83,9 @@ public class BluehService {
         return errorMsg;
     }
 
-    public BluehEvent saveNewBlueEvent(GeoLocation geoLocation) {
-        BluehEvent bluehEvent = new BluehEvent(geoLocation);
-        return repo.save(bluehEvent);
+    public BluehEvent saveNewBlueEvent(GeoLocation geoLocation, String userName) {
+        BluehEvent bluehEvent = new BluehEvent(geoLocation, userName);
+        return bluehEventRepo.save(bluehEvent);
     }
 
     public List<BluehEvent> addEvents(List<BluehEvent> events) {
@@ -93,7 +93,7 @@ public class BluehService {
         for (BluehEvent event : events) {
             GeoLocation location = new GeoLocation(event.getLatitude(), event.getLongitude());
             if (checkCoordinates(location) == null) {
-                repo.save(event);
+                bluehEventRepo.save(event);
                 savedEvents.add(event);
             }
         }
