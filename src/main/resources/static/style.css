@@ -140,6 +140,7 @@ nav ul ul {
 
   .hidden {
     display: none; } }
+
 /*** HEADER ***/
 header {
   display: flex;
@@ -177,13 +178,6 @@ header {
     padding-bottom: 1rem;
 }
 
-
-.box {
-  display: flex;
-  justify-content: center;
-  background-color: #2FA803; /*oliviges gruen*/
-  padding: 2rem;
-  }
 
 /* tool tip*/
 
@@ -310,9 +304,20 @@ input#saveButton.form-submit-button:focus{
     border-radius: 1rem;
     }
 
+/* BOXES */
+
+.box {
+  display: flex;
+  flex-direction: row;
+  justify-content: center; /*default*/
+  align-items: stretch; /*default*/
+  background-color: #2FA803; /*oliviges gruen*/
+  padding: 2rem;
+  }
+
 .box-30, .box-50, .box-70 {
     background-color: #258203; /*dunkles oliviges gruen*/
-    display: inline-flex;
+    display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
@@ -320,6 +325,10 @@ input#saveButton.form-submit-button:focus{
     padding: 2rem;
     margin: 1rem;
     border: 1px solid white;
+    }
+
+.box-50 {
+    align-items: center;
     }
 
 .box-30{

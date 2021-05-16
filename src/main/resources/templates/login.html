@@ -29,53 +29,50 @@
 
         <!--ANMELDEN-->
         <section class="box-50">
-            <form name="f" th:action="@{/login}" method="post">
-                <fieldset>
-                    <div th:if="${param.error}" class="alert alert-error">
-                        Invalid username and password.
-                    </div>
+            <section class="inner-box">
+                <form name="f" th:action="@{/login}" method="post">
+                    <fieldset>
+                        <div th:if="${param.error}" class="alert alert-error">
+                            Invalid username and password.
+                        </div>
 
-                    <div th:if="${param.logout}" class="alert alert-success">
-                        You have been logged out.
-                    </div>
+                        <div th:if="${param.logout}" class="alert alert-success">
+                            You have been logged out.
+                        </div>
 
-                    <label for="username">Benutzername</label>
-                    <input class="form-input-field" type="text" id="username" name="username"/>
+                        <div>
+                            <label for="username">Benutzername</label>
+                            <input class="form-input-field" type="text" id="username" name="username"/>
+                        </div>
 
-                    <label for="password">Passwort</label>
-                    <input class="form-input-field" type="password" id="password" name="password"/>
+                        <div>
+                            <label for="password">Passwort</label>
+                            <input class="form-input-field" type="password" id="password" name="password"/>
+                        </div>
 
-                    <button class="form-submit-button orange-button" type="submit">Anmelden</button>
-                </fieldset>
-            </form>
+                        <button class="form-submit-button orange-button" type="submit">Anmelden</button>
+                    </fieldset>
 
+                </form>
+            </section>
         </section>
 
         <!--REGISTRIEREN-->
+        <!--ANMELDEN-->
         <section class="box-50">
             <form method="POST"
                   th:action="@{/registerNewUser}"
                   th:object="${user}">
                 <fieldset>
-                <label for="firstname">Vorname</label>
-                <input class="form-input-field" type="text" id="firstname" name="firstname"/>
-
-                <label for="lastname">Nachname</label>
-                <input class="form-input-field" type="text" id="lastname" name="lastname"/>
-
-                <label for="email">eMail</label>
-                <input class="form-input-field" type="text" id="email" name="email"/>
-
-                <label for="username">Benutzername</label>
-                <input class="form-input-field" type="text" id="username" name="username"/>
-
-                <label for="password">Passwort</label>
-                <input class="form-input-field" type="password" id="password" name="password"/>
-
-                <br/>
-                <div class="form-row">
-                    <button class="form-submit-button orange-button" type="submit">Registrieren</button>
-                </div>
+                    <div th:replace="fragments/input :: input('text','Vorname', 'firstname')"/>
+                    <div th:replace="fragments/input :: input('text','Nachname', 'lastname')"/>
+                    <div th:replace="fragments/input :: input('text','Email', 'email')"/>
+                    <div th:replace="fragments/input :: input('text','Benutzername', 'username')"/>
+                    <div th:replace="fragments/input :: input('password','Passwort', 'password')"/>
+                    <br/>
+                    <div class="form-row">
+                        <button class="form-submit-button orange-button" type="submit">Registrieren</button>
+                    </div>
                 </fieldset>
             </form>
         </section>

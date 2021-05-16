@@ -23,14 +23,9 @@ public class RegistrationController {
     // wenn man es customizen moechte:
     //https://docs.spring.io/spring-security/site/docs/4.2.20.RELEASE/guides/html5/form-javaconfig.html
     @GetMapping("/login")
-    public String login() {
-        return "login";
-    }
-
-    @GetMapping("/register")
-    public String showRegistration(Model model) {
+    public String login(Model model) {
         model.addAttribute("user", new User());
-        return "register";
+        return "login";
     }
 
     @PostMapping("/registerNewUser")
@@ -44,7 +39,7 @@ public class RegistrationController {
         }
 
         if (bindingResult.hasErrors()) {
-            return "register";
+            return "login";
         }
 
         //password verschluesseln
@@ -58,7 +53,7 @@ public class RegistrationController {
             bindingResult.addError(new FieldError("user",
                     "username",
                     "Beim Speichern kam es zu einem Problem. Bitte katrin.rose@posteo.de kontaktieren."));
-            return "register";
+            return "login";
         }
         //todo hier ein pop up oder so etwas? das andere macht probleme beim einbinden vom nav
         return "redirect:/";
