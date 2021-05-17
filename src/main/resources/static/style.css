@@ -182,7 +182,6 @@ header .logo {
     text-shadow: -2px -2px 0 #465902, 2px -2px 0 #465902, -2px 2px 0 #465902, 2px 2px 0 #465902;
     }
 
-
 @media only screen and (max-width: 850px) {
   header {
     height: 4rem;
@@ -366,7 +365,7 @@ input#saveButton.form-submit-button:focus{
 
 .text-unten{
     align-items: center;
-    width: 95%;
+    width: 100%;
     padding-bottom: 1rem;
 }
 

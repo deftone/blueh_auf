@@ -8,12 +8,20 @@
     <link rel="stylesheet" href="style.css"/>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Muli">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Pacifico">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
     <script>
-        $(function(){
-         $('.navigation').load("navigation");
-         });
+            $(function(){
+             $('.navigation').load("navigation");
+             });
+
+    <!--   console.log("menu aendern");-->
+    <!--   var loginItem = document.getElementById("login");-->
+    <!--   var logoutItem = document.getElementById("logout");-->
+    <!--   loginItem.style.display="none";-->
+    <!--   logoutItem.style.display="block";-->
+
     </script>
 </head>
 
@@ -54,6 +62,16 @@
                     </fieldset>
 
                 </form>
+                <br>
+                <br>
+                <p>Wenn du dich für heute abmelden möchtest, klicke auf Abmelden.
+                    Wenn du deine Registrierung löschen möchtest schreib an katrin.rose@posteo.de</p>
+                <form name="f" th:action="@{/logout}" method="post">
+                    <fieldset>
+                        <button class="form-submit-button blue-button" type="submit">Abmelden</button>
+                    </fieldset>
+
+                </form>
             </section>
         </section>
 
@@ -71,20 +89,23 @@
                     <div th:replace="fragments/input :: input('password','Passwort', 'password')"/>
                     <br/>
                     <div class="form-row">
-                        <button class="form-submit-button orange-button" type="submit">Registrieren</button>
+                        <button class="form-submit-button lila-button" type="submit">Registrieren</button>
                     </div>
                 </fieldset>
             </form>
         </section>
     </section>
 
-    <section class="text-unten">
-        <p><i class="fa fa-info-circle" aria-hidden="true"></i> Hinweis: Dies ist eine private Initiative zum Erhalt der
-            Artenvielfalt. Diese Webseite wird nicht für kommerzielle Zwecke
-            genutzt. Wir geben eure Daten nicht weiter. Falls ihr
-            bei der Biotopvernetzung mitmacht, so werden eure Blühpunkte anonym auf der Karte angezeigt. Wir nutzen
-            keine Cookies und erstellen keine anderen Statistiken.
-        </p>
+    <section class="box">
+        <section class="text-unten">
+            <p><i class="fa fa-info-circle" aria-hidden="true"></i> Hinweis: Dies ist eine private Initiative zum Erhalt
+                der
+                Artenvielfalt. Diese Webseite wird nicht für kommerzielle Zwecke
+                genutzt. Wir geben eure Daten nicht weiter. Falls ihr
+                bei der Biotopvernetzung mitmacht, so werden eure Blühpunkte anonym auf der Karte angezeigt. Wir nutzen
+                keine Cookies und erstellen keine anderen Statistiken.
+            </p>
+        </section>
     </section>
 </main>
 
