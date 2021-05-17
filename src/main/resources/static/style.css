@@ -81,6 +81,10 @@ h1 {
   font-family: 'Pacifico', cursive;
   }
 
+h1.bunt{
+    color: #FFDD1F; /*sattes gelb*/
+}
+
 h2{
   font-size: 3rem;
 }
@@ -109,14 +113,6 @@ nav a {
 nav li {
   list-style: none;
   float: left; }
-
-#login{
-    display: block;
-}
-
-#logout{
-    display: none;
-}
 
 nav li a {
     text-align: center; }
@@ -399,3 +395,11 @@ input#saveButton.form-submit-button:focus{
         height: 20rem;
         }
 }
+
+
+/*CONTACT*/
+
+.container_contact div{
+  padding: 1rem 0;
+   text-align: center;
+  }
