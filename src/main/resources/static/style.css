@@ -381,3 +381,21 @@ input#saveButton.form-submit-button:focus{
      margin: 0%;
      border-radius: 1rem;
 }
+
+/*fuers handy anpassen */
+@media only screen and (max-width: 850px) {
+    .box {
+      flex-direction: column;
+      }
+
+    .box-50,
+    .box-30,
+    .box-70,
+    .text-unten{
+        width: 90%;
+    }
+
+    .map {
+        height: 20rem;
+        }
+}
