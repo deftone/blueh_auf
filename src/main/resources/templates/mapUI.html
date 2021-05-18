@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="reset.css">
     <link rel="stylesheet" href="map/ol.css"/>
     <link rel="stylesheet" href="style.css"/>
+    <link rel="stylesheet" href="popup.css"/>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Muli">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Pacifico">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lakki+Reddy">
@@ -40,6 +41,32 @@
         </section>
 
         <section class="box-30">
+
+            <!-- Trigger/Open The Modal -->
+            <button class="form-submit-button red-button" id="myBtn">Wer darf sich hier eintragen?</button>
+
+            <!-- The Modal -->
+            <div id="myModal" class="modal">
+
+                <!-- Modal content -->
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <h2>Welche Voraussetzungen oder Kriterien muss ich erfüllen,
+                        um mich mit einem Blühpunkt in der Karte eintragen zu können? </h2>
+                    <br>
+                    <p>Ich habe <span class="kursiv">heimisches, regionales</span> Saatgut in Form einer Blühkiste oder Saatgut aus dem
+                        Blühautomaten (Flora oder Fauna) in meinem Garten ausgebracht.
+                        Mindestens eine der drei Optionen trifft also zu.
+                    <ul>
+                        <li>Ich habe Saatgut in einem großen tiefen Blumenkübel gepflanzt.</li>
+                        <li>Ich habe eine oder mehrere eingebuddelte Blühkiste(n).</li>
+                        <li>Ich habe eine Blühwiese von mind. 0,5 qm angelegt.</li>
+                    </ul>
+                    </p>
+                </div>
+
+            </div>
+
             <p>Um einen neuen Punkt auf der Karte hinzu zufügen hast du zwei Möglichkeiten:</p>
             <br>
             <form id="address" method="POST" th:action="@{/biotopvernetzungUI/newBluehEventAddress}">
@@ -104,5 +131,6 @@
         initialize_map(list, showNewLocation, coordinatesString, address, errorMsg);
 
 </script>
+<script src="popup.js"></script>
 </body>
 </html>
