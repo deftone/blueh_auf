@@ -43,13 +43,17 @@ body {
 
 
 body.background{
-         background-image: url("images/Logo.jpg");
+    background-color: #2FA803; /*oliviges gruen*/
 }
 
 a {
   text-decoration: none;
 }
 
+img{
+  max-width:100%;
+  max-height:100%;
+}
 
 main {
   padding-top: 6rem;
@@ -81,7 +85,7 @@ h1 {
   font-family: 'Pacifico', cursive;
   }
 
-h1.bunt{
+h1.bunt, a.bunt{
     color: #FFDD1F; /*sattes gelb*/
 }
 
@@ -339,7 +343,7 @@ input#saveButton.form-submit-button:focus{
   padding: 2rem;
   }
 
-.box-30, .box-50, .box-70, .text-unten {
+.box-30, .box-50, .box-70, .box-90, .text-unten {
     background-color: #258203; /*dunkles oliviges gruen*/
     display: flex;
     flex-direction: column;
@@ -365,6 +369,10 @@ input#saveButton.form-submit-button:focus{
 
 .box-70 {
     width: 75%;
+    }
+
+.box-90 {
+    width: 90%;
     }
 
 .text-unten{
