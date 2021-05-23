@@ -134,7 +134,16 @@ nav ul ul {
   position: absolute;
   z-index: 999; }
 
+.with-dots {
+  padding: 2rem;
+  list-style-type: circle;
+}
 
+li {
+  grid-gap: 1.75em;
+  align-items: start;
+  line-height: 1.5;
+}
 
 @media only screen and (max-width: 850px) {
   i {
