@@ -206,8 +206,13 @@ header .logo {
 .boldAndPadding{
     font-weight: bold;
     padding-bottom: 1rem;
+    padding-top: 1rem;
 }
 
+.padding{
+    padding-bottom: 1rem;
+    padding-top: 1rem;
+}
 
 /* tool tip*/
 
@@ -370,6 +375,7 @@ input#saveButton.form-submit-button:focus{
 
 .box-info {
     width: 50%;
+    justify-content: start;
     }
 
 a.color {
