@@ -352,7 +352,7 @@ input#saveButton.form-submit-button:focus{
   padding: 2rem;
   }
 
-.box-30, .box-50, .box-70, .box-90, .text-unten {
+.box-30, .box-50, .box-70, .box-90, .box-info, .text-unten {
     background-color: #258203; /*dunkles oliviges gruen*/
     display: flex;
     flex-direction: column;
@@ -366,6 +366,14 @@ input#saveButton.form-submit-button:focus{
 
 .box-50 {
     align-items: center;
+    }
+
+.box-info {
+    width: 50%;
+    }
+
+a.color {
+    color: #FFDD1F; /*sattes gelb*/
     }
 
 .box-30{

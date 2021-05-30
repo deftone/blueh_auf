@@ -22,4 +22,9 @@ public class HomeController {
     public String contact() {
         return "contact";
     }
+
+    @GetMapping({"/info"})
+    public String info() {
+        return "info";
+    }
 }
