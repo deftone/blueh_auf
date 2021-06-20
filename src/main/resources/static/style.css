@@ -61,7 +61,7 @@ main {
 
 @media only screen and (max-width: 850px) {
   main {
-    top: 4rem; } }
+    top: 0rem; } }
 
 @media only screen and (max-width: 850px) {
   #hidden_mobile {
@@ -357,7 +357,7 @@ input#saveButton.form-submit-button:focus{
   padding: 2rem;
   }
 
-.box-30, .box-50, .box-70, .box-90, .box-info, .text-unten {
+.box-25, .box-50, .box-75, .box-90, .box-100, .box-info, .text-unten {
     background-color: #258203; /*dunkles oliviges gruen*/
     display: flex;
     flex-direction: column;
@@ -382,7 +382,7 @@ a.color {
     color: #FFDD1F; /*sattes gelb*/
     }
 
-.box-30{
+.box-25{
     width: 25%;
     }
 
@@ -390,12 +390,16 @@ a.color {
     width: 50%;
     }
 
-.box-70 {
+.box-75 {
     width: 75%;
     }
 
 .box-90 {
     width: 90%;
+    }
+
+.box-100 {
+    width: 100%;
     }
 
 .text-unten{
@@ -424,8 +428,8 @@ a.color {
       }
 
     .box-50,
-    .box-30,
-    .box-70,
+    .box-25,
+    .box-75,
     .text-unten{
         width: 90%;
     }
