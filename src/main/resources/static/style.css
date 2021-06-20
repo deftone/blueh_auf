@@ -85,10 +85,6 @@ h1 {
   font-family: 'Pacifico', cursive;
   }
 
-h1.bunt, a.bunt{
-    color: #FFDD1F; /*sattes gelb*/
-}
-
 h2{
   font-size: 3rem;
 }
@@ -98,6 +94,26 @@ p, ul, li{
   font-size: 2rem;
   line-height: 1.25;
   color: white;
+}
+
+/* aufm smartphone aber kleiner*/
+@media only screen and (max-width: 850px) {
+
+    h1 {
+      font-size: 3rem;
+      padding: 1rem 1rem 1rem 1rem;
+      font-family: 'Pacifico', cursive;
+      }
+
+    h2{
+      font-size: 1.8rem;
+    }
+
+    p, ul, li{
+      font-size: 1.5rem;
+      line-height: 1.1;
+      color: white;
+    }
 }
 
 /*** GENERAL: NAVIGATION ***/
@@ -357,7 +373,7 @@ input#saveButton.form-submit-button:focus{
   padding: 2rem;
   }
 
-.box-25, .box-50, .box-75, .box-90, .box-100, .box-info, .text-unten {
+.box-25, .box-50, .box-75, .box-80, .box-90, .box-100, .box-info, .text-unten {
     background-color: #258203; /*dunkles oliviges gruen*/
     display: flex;
     flex-direction: column;
@@ -376,10 +392,6 @@ input#saveButton.form-submit-button:focus{
 .box-info {
     width: 50%;
     justify-content: start;
-    }
-
-a.color {
-    color: #FFDD1F; /*sattes gelb*/
     }
 
 .box-25{
@@ -402,11 +414,32 @@ a.color {
     width: 100%;
     }
 
+@media only screen and (max-width: 850px) {
+
+.box {
+  padding: 0.5rem;
+  }
+
+.box-info {
+    width: 80%;
+    justify-content: start;
+    }
+
+.box-80 {
+    width: 80%;
+    justify-content: start;
+    }
+}
+
 .text-unten{
     align-items: center;
     width: 100%;
     padding-bottom: 1rem;
 }
+
+a.color {
+    color: #FFDD1F; /*sattes gelb*/
+    }
 
 .map {
     border-radius: 1rem;
