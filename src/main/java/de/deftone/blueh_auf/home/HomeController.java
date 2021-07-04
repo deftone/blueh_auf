@@ -27,4 +27,9 @@ public class HomeController {
     public String info() {
         return "info";
     }
+
+    @GetMapping({"/aktuelles"})
+    public String aktuelles() {
+        return "aktuelles";
+    }
 }
