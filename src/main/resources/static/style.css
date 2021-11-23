@@ -473,3 +473,91 @@ a.color {
   padding: 1rem 0;
    text-align: center;
   }
+
+
+
+
+/*** PRESSE todo noch etwas aussortieren!?!***/
+
+
+/*** GENERAL: CONTAINER MEDIA ***/
+.container_media_padding img, .container_media_100 img{
+  height: auto;
+  width: auto;
+  max-width: 100%;
+  max-height: 100%;
+  border-radius: 1rem;
+  }
+
+.container_media_padding {
+  padding: 3.2rem 2.4rem;
+  }
+
+.container_media_100 {
+  padding: 10 rem;
+  width: 100%;
+  }
+
+/*** GENERAL: CONTAINER WITH TEXT ***/
+.container_main_60 {
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  border-radius: 1rem;
+  width: 60%;
+  }
+
+
+/*** GENERAL: CONTAINER ASIDE ***/
+
+.container_presse {
+  display: flex;
+  justify-content: center;
+  background-color: #ff8000;   /* orange */
+  color: white;
+  }
+
+.container_presse .title {
+  text-align: center;
+  text-shadow: 5px 5px black;  /* dunkles blau */
+  padding: 1rem 0;
+  }
+
+.container_presse .title_dunkel {
+  text-align: center;
+  text-shadow: 5px 5px #08088A;  /* noch dunkleres blau */
+  padding: 1rem 0;
+  }
+
+
+.container_presse .container_main_60 p{
+    margin: 0 2rem;
+    text-align: justify;
+    font-size: 2rem;
+
+    }
+
+.container_presse p {
+  font-size: 1.2rem;
+  }
+
+.container_presse h2 {
+  margin: 0 2rem;
+  }
+
+.lila_hintergrund {
+  background-color: #7C0082;   /* lila */
+  }
+
+.gruener_hintergrund {
+  background-color: #258203;   /* unkles oliviges gruen */
+  }
+
+.blauer_hintergrund {
+  background-color: #59A8D9;   /* hellblauer */
+  }
+
+.rosaner_hintergrund {
+  background-color: #D95FC5;   /* rosa */
+  }

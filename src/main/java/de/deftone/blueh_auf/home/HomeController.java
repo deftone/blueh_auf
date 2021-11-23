@@ -32,4 +32,9 @@ public class HomeController {
     public String aktuelles() {
         return "aktuelles";
     }
+
+    @GetMapping({"/aktionen"})
+    public String aktionen() {
+        return "aktionen";
+    }
 }
