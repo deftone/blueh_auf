@@ -576,6 +576,10 @@ a.color {
     margin: 1rem 1.6rem;
     }
 
+.container_presse .container_main_60 p {
+  font-size: 1.5rem;
+  }
+
   .container_presse {
     flex-direction: column;
     }
