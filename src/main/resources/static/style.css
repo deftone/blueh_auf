@@ -492,6 +492,10 @@ a.color {
   padding: 3.2rem 2.4rem;
   }
 
+.container_media_corners img{
+  border-radius: 1rem;
+  }
+
 .container_media_100 {
   padding: 10 rem;
   width: 100%;
@@ -555,8 +559,16 @@ a.color {
   background-color: #7C0082;   /* lila */
   }
 
+.hellgruener_hintergrund {
+  background-color: #2FA803;   /* helles oliviges gruen */
+  }
+
 .gruener_hintergrund {
-  background-color: #258203;   /* unkles oliviges gruen */
+  background-color: #258203;   /* dunkles oliviges gruen */
+  }
+
+.dunkelblauer_hintergrund {
+  background-color: #0080ff;   /* hellblauer */
   }
 
 .blauer_hintergrund {
