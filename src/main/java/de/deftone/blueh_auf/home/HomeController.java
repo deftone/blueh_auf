@@ -37,4 +37,9 @@ public class HomeController {
     public String aktionen() {
         return "aktionen";
     }
+
+    @GetMapping({"/galerie"})
+    public String galerie() {
+        return "galerie";
+    }
 }
