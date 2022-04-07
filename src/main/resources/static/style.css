@@ -538,7 +538,7 @@ a.color {
 
 .container_presse .container_main_60 a {
   background-color: transparent ;
-   color: white;
+   color: #FFDD1F; /*sattes gelb*/
    font-weight: bold;
    font-size: 1.8rem;
    text-align: center;
@@ -603,4 +603,14 @@ a.color {
   .container_main_60 {
     width: 100%;
     }
+  }
+
+.galerie_text{
+    padding-top: 1rem;
+    align: center;
+    text-align: center;
+}
+
+.galerie_box {
+  padding: 0.2rem 0.4rem;
   }
