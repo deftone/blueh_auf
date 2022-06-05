@@ -33,6 +33,11 @@ public class HomeController {
         return "aktuelles";
     }
 
+    @GetMapping({"/automaten"})
+    public String automaten() {
+        return "automaten";
+    }
+
     @GetMapping({"/aktionen"})
     public String aktionen() {
         return "aktionen";

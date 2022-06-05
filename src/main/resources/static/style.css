@@ -166,7 +166,7 @@ li {
 }
 
 @media only screen and (max-width: 850px) {
-  i {
+  i { /* a ?!?!?! */
     padding: 1rem;
     padding-right: 2rem;
     color: white;
