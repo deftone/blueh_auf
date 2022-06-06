@@ -79,6 +79,11 @@ h1, h2 {
   text-shadow: -1px -1px 0 #1b5764, 1px -1px 0 #1b5764, -1px 1px 0 #1b5764, 1px 1px 0 #1b5764;
   }
 
+h2.dark{
+  color: brown;
+   text-shadow: -1px -1px 0 #1b5764, 1px -1px 0 #1b5764, -1px 1px 0 #1b5764, 1px 1px 0 #1b5764;
+}
+
 h1 {
   font-size: 5rem;
   padding: 2rem 2rem 3rem 2rem;
